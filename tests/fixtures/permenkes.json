@@ -1,0 +1,5383 @@
+{
+  "versi_tabel": "WHO-2006-Permenkes-2-2020-v1",
+  "sumber": "Standar Antropometri Anak Permenkes No. 2 Tahun 2020 / WHO 2006 LMS",
+  "jumlah_titik": 672,
+  "fixtures": [
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 2.08,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 2.46,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 2.88,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 3.35,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 3.86,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 4.42,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 5.03,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 2.93,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 3.39,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 3.9,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 4.47,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 5.1,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 5.8,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 1,
+      "nilai_ukur": 6.57,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 3.79,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 4.32,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 4.91,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 5.57,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 6.29,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 7.09,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 2,
+      "nilai_ukur": 7.97,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 4.44,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 5.02,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 5.66,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 6.38,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 7.16,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 8.02,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 8.97,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 5.67,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 6.35,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 7.11,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 7.93,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 8.85,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 9.85,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 10.95,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 6.44,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 7.18,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 8.0,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 8.9,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 9.9,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 11.01,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 9,
+      "nilai_ukur": 12.23,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 7.01,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 7.8,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 8.67,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 9.65,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 10.73,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 11.93,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 13.26,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 7.94,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 8.83,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 9.82,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 10.94,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 12.19,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 13.59,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 15.17,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 8.76,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 9.75,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 10.88,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 12.15,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 13.59,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 15.22,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 17.08,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 10.19,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 11.39,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 12.77,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 14.34,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 16.15,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 18.24,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 20.64,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 11.43,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 12.84,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 14.47,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 16.35,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 18.54,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 21.09,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 24.09,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 12.61,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 14.24,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 16.13,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 18.34,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 20.94,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 24.01,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 27.66,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 2.03,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 2.39,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 2.79,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 3.23,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 3.71,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 4.23,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 4.79,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 2.73,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 3.16,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 3.64,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 4.19,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 4.8,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 5.48,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 1,
+      "nilai_ukur": 6.23,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 3.45,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 3.94,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 4.5,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 5.13,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 5.84,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 6.63,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 2,
+      "nilai_ukur": 7.52,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 3.99,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 4.54,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 5.15,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 5.85,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 6.63,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 7.51,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 8.51,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 5.09,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 5.73,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 6.46,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 7.3,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 8.25,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 9.34,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 10.58,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 5.79,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 6.49,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 7.3,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 8.23,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 9.29,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 10.51,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 9,
+      "nilai_ukur": 11.93,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 6.32,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 7.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 7.95,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 8.95,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 10.11,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 11.45,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 13.02,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 7.21,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 8.08,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 9.07,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 10.23,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 11.59,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 13.18,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 15.07,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 8.05,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 9.02,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 10.15,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 11.48,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 13.05,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 14.91,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 17.15,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 9.55,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 10.75,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 12.16,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 13.85,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 15.88,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 18.34,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 21.37,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 10.86,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 12.29,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 14.0,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 16.07,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 18.6,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 21.73,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 25.65,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 12.06,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 13.73,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 15.75,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 18.22,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 21.28,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 25.14,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 30.07,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 44.2,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 46.1,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 47.99,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 49.88,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 51.78,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 53.67,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 55.56,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 55.2,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 57.27,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 59.35,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 61.43,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 63.51,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 65.58,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 3,
+      "nilai_ukur": 67.66,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 61.14,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 63.3,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 65.46,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 67.62,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 69.78,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 71.94,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 74.11,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 68.56,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 70.95,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 73.35,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 75.75,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 78.15,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 80.54,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 82.94,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 74.13,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 76.84,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 79.55,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 82.26,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 84.97,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 87.68,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 18,
+      "nilai_ukur": 90.39,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 78.65,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 81.71,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 84.76,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 87.82,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 90.87,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 93.93,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 96.98,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 43.56,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 45.42,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 47.29,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 49.15,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 51.01,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 52.87,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 54.74,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 53.55,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 55.63,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 57.72,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 59.8,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 61.89,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 63.97,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 3,
+      "nilai_ukur": 66.06,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 59.05,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 61.28,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 63.5,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 65.73,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 67.96,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 70.19,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 72.41,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 66.41,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 68.94,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 71.48,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 74.02,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 76.55,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 79.09,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 81.62,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 72.11,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 74.98,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 77.84,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 80.71,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 83.57,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 86.44,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 18,
+      "nilai_ukur": 89.31,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 76.84,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 80.03,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 83.22,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 86.42,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 89.61,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 92.8,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "PB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 95.99,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 77.95,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 81.01,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 84.06,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 87.12,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 90.17,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 93.23,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 96.28,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 85.17,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 88.81,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 92.45,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 96.08,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 99.72,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 103.36,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 107.0,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 90.95,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 95.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 99.2,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 103.33,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 107.45,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 111.58,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 115.71,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 96.2,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 100.79,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 105.38,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 109.96,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 114.55,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 119.14,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 123.73,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 76.14,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 79.33,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 82.52,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 85.72,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 88.91,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 92.1,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 95.29,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 83.86,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 87.59,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 91.32,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 95.05,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 98.78,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 102.51,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 106.24,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 90.07,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 94.29,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 98.51,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 102.73,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 106.95,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 111.17,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 115.39,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 95.39,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 100.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 104.75,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 109.42,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 114.1,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 118.78,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "TB/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 123.45,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 1.88,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 2.04,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 2.23,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 2.44,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 2.68,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 2.95,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 45,
+      "nilai_ukur": 3.26,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 3.56,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 3.86,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 4.18,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 4.55,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 4.95,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 5.41,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 55,
+      "nilai_ukur": 5.93,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 5.7,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 6.15,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 6.66,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 7.22,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 7.84,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 8.54,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 9.33,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 7.58,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 8.18,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 8.84,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 9.58,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 10.4,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 11.32,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 12.35,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 9.28,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 10.02,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 10.83,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 11.74,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 12.75,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 13.88,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 15.16,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 11.09,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 11.98,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 12.97,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 14.07,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 15.31,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 16.69,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 18.25,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 14.49,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 15.7,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 17.06,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 18.57,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 20.28,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 22.2,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "M",
+      "x": 110,
+      "nilai_ukur": 24.38,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 1.9,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 2.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 2.25,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 2.46,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 2.7,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 2.97,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 45,
+      "nilai_ukur": 3.27,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 3.53,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 3.83,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 4.16,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 4.53,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 4.94,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 5.42,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 55,
+      "nilai_ukur": 5.95,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 5.53,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 5.99,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 6.5,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 7.07,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 7.71,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 8.44,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 9.27,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 7.25,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 7.85,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 8.51,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 9.26,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 10.1,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 11.06,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 12.14,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 8.93,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 9.67,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 10.5,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 11.43,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 12.47,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 13.65,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 15.0,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 10.77,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 11.68,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 12.7,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 13.84,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 15.14,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 16.6,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 18.27,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 14.22,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 15.48,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 16.89,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 18.49,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 20.31,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 22.38,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/PB",
+      "jenis_kelamin": "F",
+      "x": 110,
+      "nilai_ukur": 24.75,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 5.87,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 6.33,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 6.85,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 7.43,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 8.08,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 8.8,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 65,
+      "nilai_ukur": 9.62,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 7.72,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 8.33,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 9.0,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 9.75,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 10.59,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 11.52,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 75,
+      "nilai_ukur": 12.58,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 9.42,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 10.17,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 10.99,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 11.91,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 12.94,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 14.1,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 85,
+      "nilai_ukur": 15.39,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 11.25,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 12.15,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 13.16,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 14.28,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 15.53,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 16.94,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 95,
+      "nilai_ukur": 18.53,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 13.21,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 14.3,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 15.52,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 16.89,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 18.42,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 20.15,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 105,
+      "nilai_ukur": 22.11,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 16.99,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 18.49,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 20.17,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 22.07,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 24.23,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 26.67,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "M",
+      "x": 120,
+      "nilai_ukur": 29.46,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 5.66,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 6.13,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 6.65,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 7.24,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 7.9,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 8.65,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 65,
+      "nilai_ukur": 9.5,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 7.38,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 7.98,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 8.66,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 9.42,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 10.28,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 11.25,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 75,
+      "nilai_ukur": 12.35,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 9.06,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 9.81,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 10.65,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 11.6,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 12.66,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 13.86,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 85,
+      "nilai_ukur": 15.23,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 10.92,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 11.84,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 12.88,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 14.04,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 15.35,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 16.84,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 95,
+      "nilai_ukur": 18.54,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 12.94,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 14.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 15.35,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 16.79,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 18.42,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 20.27,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 105,
+      "nilai_ukur": 22.4,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 16.78,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 18.36,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 20.15,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 22.19,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 24.52,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 27.21,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "BB/TB",
+      "jenis_kelamin": "F",
+      "x": 120,
+      "nilai_ukur": 30.33,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 10.18,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 11.13,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 12.2,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 13.41,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 14.77,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 16.33,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 18.1,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 13.7,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 14.81,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 16.02,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 17.34,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 18.79,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 20.38,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 22.12,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 13.42,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 14.43,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 15.56,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 16.81,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 18.21,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 19.77,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 21.52,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 12.63,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 13.54,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 14.58,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 15.74,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 17.07,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 18.58,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 20.32,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 12.52,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 13.4,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 14.41,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 15.56,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 16.9,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 18.47,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 20.33,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 12.34,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 13.19,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 14.18,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 15.33,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 16.69,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 18.34,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 48,
+      "nilai_ukur": 20.36,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 12.19,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 13.04,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 14.02,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 15.2,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 16.62,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 18.39,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 20.65,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 10.13,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 11.1,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 12.16,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 13.34,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 14.63,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 16.06,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 17.65,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 13.24,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 14.33,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 15.55,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 16.9,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 18.41,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 20.1,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 21.99,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 12.92,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 13.94,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 15.08,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 16.37,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 17.84,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 19.51,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 21.44,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 12.19,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 13.12,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 14.18,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 15.4,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 16.8,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 18.45,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 20.4,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 12.16,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 13.07,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 14.12,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 15.35,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 16.8,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 18.55,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 20.68,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 12.03,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 12.93,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 13.99,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 15.25,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 16.77,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 18.65,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 48,
+      "nilai_ukur": 21.02,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 11.94,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 12.85,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 13.93,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 15.24,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 16.87,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 18.93,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "IMT/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 21.67,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 30.65,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 31.92,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 33.19,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 34.46,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 35.73,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 37.0,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 0,
+      "nilai_ukur": 38.27,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 39.48,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 40.76,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 42.05,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 43.33,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 44.61,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 45.9,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 6,
+      "nilai_ukur": 47.18,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 42.13,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 43.44,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 44.75,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 46.07,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 47.38,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 48.69,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 12,
+      "nilai_ukur": 50.0,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 44.15,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 45.51,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 46.88,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 48.25,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 49.62,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 50.99,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 24,
+      "nilai_ukur": 52.35,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 45.25,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 46.66,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 48.08,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 49.49,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 50.9,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 52.32,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 36,
+      "nilai_ukur": 53.73,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 46.47,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 47.95,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 49.42,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 50.9,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 52.38,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 53.85,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "M",
+      "x": 60,
+      "nilai_ukur": 55.33,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 30.33,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 31.51,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 32.69,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 33.88,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 35.06,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 36.25,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 0,
+      "nilai_ukur": 37.43,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 38.38,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 39.65,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 40.93,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 42.2,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 43.47,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 44.74,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 6,
+      "nilai_ukur": 46.02,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 40.95,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 42.27,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 43.58,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 44.9,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 46.22,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 47.54,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 12,
+      "nilai_ukur": 48.85,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 43.05,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 44.42,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 45.8,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 47.17,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 48.55,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 49.93,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 24,
+      "nilai_ukur": 51.3,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 44.21,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 45.63,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 47.04,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 48.46,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 49.88,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 51.29,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 36,
+      "nilai_ukur": 52.71,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 45.53,
+      "expected_z": -3.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 47.01,
+      "expected_z": -2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 48.48,
+      "expected_z": -1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 49.96,
+      "expected_z": 0.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 51.44,
+      "expected_z": 1.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 52.91,
+      "expected_z": 2.0,
+      "toleransi": 0.05
+    },
+    {
+      "indikator": "LK/U",
+      "jenis_kelamin": "F",
+      "x": 60,
+      "nilai_ukur": 54.39,
+      "expected_z": 3.0,
+      "toleransi": 0.05
+    }
+  ]
+}
