@@ -33,6 +33,35 @@ Workspace aplikasi **Posyandu+** — Sistem deteksi dini risiko *stunting* dan p
    npm test
    ```
 
+## Database & Keamanan Supabase (Fase 1.1)
+
+Proyek Supabase: `https://hppgnopirherqyfbuspn.supabase.co` (Region: Singapore)
+
+### 1. Migrasi Skema Database (`supabase/migrations/`)
+Jalankan file SQL migrasi secara berurutan di Supabase SQL Editor:
+1. `supabase/migrations/001_initial_schema.sql`: Seluruh 15 tabel MVP, relasi, constraint unik, CHECK, dan indeks performa.
+2. `supabase/migrations/002_rls_policies.sql`: Kebijakan Row-Level Security (RLS) untuk isolasi data Kader per Posyandu, akses Bidan seluruh wilayah, dan proteksi append-only audit log.
+3. `supabase/migrations/003_audit_triggers.sql`: Pemicu audit otomatis perubahan rekam medis oleh Bidan dengan penegakan alasan wajib.
+4. `supabase/migrations/004_storage_setup.sql`: Konfigurasi bucket privat `kia-photos` (maks 2MB) dan kebijakan akses signed URL.
+
+### 2. Pengisian Data Awal (Seeding)
+Setelah skema tabel dibuat, jalankan perintah berikut untuk mengimpor tabel referensi (`ref_lms`, `ref_kbm`, `ref_kms_line`), membuat 2 Posyandu uji, 3 akun pengguna (1 Bidan, 2 Kader), dan data balita sintetis:
+```bash
+npm run db:seed
+```
+
+**Kredensial Akun Pengguna Uji (Password: `PosyanduPlus2026!`):**
+- Bidan: `bidan.kerobokan@posyanduplus.local` (Akses seluruh wilayah)
+- Kader A: `kader.dalem@posyanduplus.local` (Posyandu Dalem)
+- Kader B: `kader.kloncing@posyanduplus.local` (Posyandu Kloncing)
+
+### 3. Pemulihan Cadangan Database (Backup Restore)
+File backup otomatis dihasilkan setiap hari oleh GitHub Actions (`.github/workflows/db-maintenance.yml`) dengan retensi 7 hari.
+Untuk memulihkan file backup `.sql.gz` ke database kosong:
+```bash
+gunzip -c backup_posyandu_plus.sql.gz | psql "postgresql://postgres:[PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
+```
+
 ## Aturan Branch & Pull Request (F0-01)
 
 - Branch utama: `main` (dilindungi, hanya melalui Pull Request).
