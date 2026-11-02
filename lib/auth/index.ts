@@ -67,3 +67,4 @@ export async function requireRole(allowedRoles: UserRole[]): Promise<CurrentUser
 
   return session;
 }
+

@@ -99,3 +99,4 @@ CREATE TRIGGER trg_audit_education
     BEFORE UPDATE OR DELETE ON public.education
     FOR EACH ROW
     EXECUTE FUNCTION public.audit_bidan_changes();
+

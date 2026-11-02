@@ -336,3 +336,4 @@ CREATE POLICY "audit_logs_insert_authenticated"
 
 -- Catatan: TIDAK ADA POLICY UPDATE ATAU DELETE pada audit_logs.
 -- Dengan demikian, tidak ada peran pengguna mana pun yang dapat memodifikasi atau menghapus jejak audit.
+

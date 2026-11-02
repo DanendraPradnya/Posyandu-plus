@@ -232,3 +232,4 @@ CREATE INDEX IF NOT EXISTS idx_alerts_child_tingkat ON public.alerts(child_id, t
 CREATE INDEX IF NOT EXISTS idx_share_links_token ON public.share_links(token_hash);
 CREATE INDEX IF NOT EXISTS idx_audit_logs_waktu ON public.audit_logs(waktu DESC);
 CREATE INDEX IF NOT EXISTS idx_extraction_jobs_child ON public.extraction_jobs(child_id, dibuat_pada DESC);
+

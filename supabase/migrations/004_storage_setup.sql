@@ -44,3 +44,4 @@ CREATE POLICY "kia_photos_delete_bidan_or_service"
         bucket_id = 'kia-photos'
         AND (public.current_user_role() = 'bidan' AND public.current_user_is_active() = true)
     );
+

@@ -45,3 +45,4 @@ export const logger = {
   error: (message: string, context?: Record<string, unknown>) => emitLog("error", message, context),
   debug: (message: string, context?: Record<string, unknown>) => emitLog("debug", message, context),
 };
+
