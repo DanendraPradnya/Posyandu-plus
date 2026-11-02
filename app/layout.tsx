@@ -5,12 +5,13 @@ export const metadata: Metadata = {
   title: "Posyandu+ | Deteksi Dini Risiko Stunting",
   description:
     "Sistem deteksi dini risiko stunting dan pemantauan pertumbuhan balita (0-59 bulan) berbasis Mobile-First PWA",
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#15803d",
+  themeColor: "#111827",
 };
 
 export default function RootLayout({
@@ -20,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-        <main className="mx-auto max-w-[420px] min-h-screen bg-white shadow-sm">
+      <body className="min-h-screen bg-[#F8FAFC] text-[#111827] antialiased">
+        <main className="mx-auto min-h-screen w-full max-w-[420px] md:max-w-[768px] bg-[#F8FAFC]">
           {children}
         </main>
       </body>
