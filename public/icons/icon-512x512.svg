@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Posyandu+ Maskable Icon">
+  <rect width="512" height="512" rx="112" fill="#111827"/>
+  <circle cx="256" cy="256" r="148" fill="#DCFCE7" opacity="0.15"/>
+  <path d="M256 140v232M140 256h232" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round"/>
+  <circle cx="364" cy="148" r="36" fill="#15803D"/>
+</svg>
+
