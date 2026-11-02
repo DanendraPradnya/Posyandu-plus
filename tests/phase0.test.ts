@@ -9,7 +9,7 @@ describe("Verifikasi Gerbang Fase 0 (Data Referensi & Kontrak)", () => {
   it("F0-03: ref_lms.csv tersedia dan memuat seluruh indikator wajib", () => {
     const lmsPath = path.join(baseDir, "ref", "ref_lms.csv");
     expect(fs.existsSync(lmsPath)).toBe(true);
-    const content = fs.readFileSync(lmsPath, "utf-8").trim().split("\n");
+    const content = fs.readFileSync(lmsPath, "utf-8").replace(/\r/g, "").trim().split("\n");
     expect(content[0]).toBe("indikator,jenis_kelamin,x,L,M,S");
     expect(content.length).toBeGreaterThan(700);
   });
@@ -17,14 +17,14 @@ describe("Verifikasi Gerbang Fase 0 (Data Referensi & Kontrak)", () => {
   it("F0-04: ref_kbm.csv tersedia sesuai tabel KBM Buku KIA", () => {
     const kbmPath = path.join(baseDir, "ref", "ref_kbm.csv");
     expect(fs.existsSync(kbmPath)).toBe(true);
-    const content = fs.readFileSync(kbmPath, "utf-8").trim().split("\n");
+    const content = fs.readFileSync(kbmPath, "utf-8").replace(/\r/g, "").trim().split("\n");
     expect(content.length).toBe(23); // 1 header + 11 rentang x 2 jenis kelamin
   });
 
   it("F0-05: ref_kms_line.csv tersedia untuk usia 0-60 bulan (L & P)", () => {
     const kmsPath = path.join(baseDir, "ref", "ref_kms_line.csv");
     expect(fs.existsSync(kmsPath)).toBe(true);
-    const content = fs.readFileSync(kmsPath, "utf-8").trim().split("\n");
+    const content = fs.readFileSync(kmsPath, "utf-8").replace(/\r/g, "").trim().split("\n");
     expect(content.length).toBe(123); // 1 header + 61 bulan x 2 jenis kelamin
   });
 

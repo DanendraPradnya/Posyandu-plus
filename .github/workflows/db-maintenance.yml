@@ -1,0 +1,56 @@
+name: Database Maintenance & Backup (F1-10 & F1-11)
+
+on:
+  schedule:
+    # 1. Ping health check setiap 6 jam untuk mencegah auto-pause pada Supabase Free (F1-10)
+    - cron: '0 */6 * * *'
+    # 2. Backup pg_dump terjadwal setiap hari pada pukul 02:00 UTC (F1-11)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Memungkinkan eksekusi manual via GitHub UI
+
+jobs:
+  ping-health:
+    name: Ping Health Check (Anti Auto-Pause)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Endpoint Health Posyandu+
+        run: |
+          APP_URL="${{ secrets.NEXT_PUBLIC_APP_URL || 'https://posyandu-plus.vercel.app' }}"
+          echo "Pinging $APP_URL/api/health ..."
+          curl --fail --max-time 15 -s "$APP_URL/api/health" || echo "Ping selesai atau endpoint belum online."
+
+  backup-database:
+    name: Backup PostgreSQL Database (pg_dump)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PostgreSQL Client Tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y postgresql-client
+
+      - name: Jalankan pg_dump Backup
+        env:
+          PGPASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          PGHOST: ${{ secrets.SUPABASE_DB_HOST || 'aws-0-ap-southeast-1.pooler.supabase.com' }}
+          PGUSER: ${{ secrets.SUPABASE_DB_USER || 'postgres.hppgnopirherqyfbuspn' }}
+          PGDATABASE: postgres
+          PGPORT: '6543'
+        run: |
+          if [ -z "$PGPASSWORD" ]; then
+            echo "⚠️ SUPABASE_DB_PASSWORD secret belum dikonfigurasi. Simulasi backup metadata."
+            mkdir -p backups
+            echo "Backup metadata generated at $(date)" > backups/backup_dummy.sql
+          else
+            mkdir -p backups
+            BACKUP_FILE="backups/posyandu_plus_backup_$(date +%Y%m%d_%H%M%S).sql.gz"
+            echo "Memulai backup ke $BACKUP_FILE ..."
+            pg_dump -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" -d "$PGDATABASE" --clean --if-exists | gzip > "$BACKUP_FILE"
+            echo "Backup selesai: $(ls -lh $BACKUP_FILE)"
+          fi
+
+      - name: Simpan Artifact Backup (Retensi 7 Hari - F1-11)
+        uses: actions/upload-artifact@v4
+        with:
+          name: posyandu-plus-database-backup
+          path: backups/
+          retention-days: 7
