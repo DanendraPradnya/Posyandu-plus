@@ -12,18 +12,18 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-950 rounded-full shadow-sm",
+    "bg-[#00B9AD] text-white hover:bg-[#009E94] active:bg-[#00857C] rounded-full shadow-sm",
   secondary:
-    "bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 active:bg-gray-100 rounded-xl",
+    "bg-white text-[#0F292E] border border-[#C5E4E8] hover:bg-[#EDF8FA] active:bg-[#DCEEEF] rounded-xl",
   danger:
-    "bg-red-700 text-white hover:bg-red-800 active:bg-red-900 rounded-xl shadow-sm",
+    "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 rounded-xl shadow-sm",
   ghost:
-    "bg-transparent text-gray-700 hover:bg-gray-100 active:bg-gray-200 rounded-xl",
+    "bg-transparent text-[#0F292E] hover:bg-[#EDF8FA] active:bg-[#DCEEEF] rounded-xl",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  default: "min-h-[48px] min-w-[48px] px-5 py-3 text-base font-medium",
-  sm: "min-h-[48px] min-w-[48px] px-4 py-2.5 text-sm font-medium",
+  default: "min-h-[44px] min-w-[44px] px-5 py-2.5 text-sm font-semibold",
+  sm: "min-h-[38px] min-w-[38px] px-3.5 py-2 text-xs font-semibold",
 };
 
 export function Button({
@@ -45,7 +45,7 @@ export function Button({
       disabled={isDisabled}
       className={[
         "inline-flex items-center justify-center gap-2 transition-colors duration-150",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:ring-offset-2",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         variantClasses[variant],
         sizeClasses[size],
@@ -58,7 +58,7 @@ export function Button({
     >
       {isLoading && (
         <svg
-          className="h-5 w-5 animate-spin text-current"
+          className="h-4 w-4 animate-spin text-current"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -83,4 +83,3 @@ export function Button({
     </button>
   );
 }
-

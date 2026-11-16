@@ -4,22 +4,35 @@
 
 :root {
   color-scheme: light;
+  --brand-aqua: #60C0D0;
+  --brand-teal: #00B9AD;
+  --brand-teal-dark: #00968C;
+  --bg-canvas: #F7FBFC;
+  --bg-surface: #EDF8FA;
+  --border-soft: #D5ECEF;
+  --text-ink: #0F292E;
+  --text-muted: #4A666C;
 }
 
 body {
-  background-color: #F8FAFC;
-  color: #111827;
-  font-family: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #F7FBFC;
+  color: #0F292E;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* Gradien lembut Synora khusus area Hero dan Header (maksimal 1 per layar) */
+/* Gradien lembut klinis berbasis #60C0D0 dan #00B9AD */
 .bg-synora-mesh {
-  background-color: #EAE6DF;
+  background-color: #E6F7F9;
   background-image:
-    radial-gradient(at 15% 15%, #F3D6CE 0px, transparent 55%),
-    radial-gradient(at 85% 20%, #DCE7EB 0px, transparent 55%),
-    radial-gradient(at 50% 85%, #EAE6DF 0px, transparent 60%);
+    radial-gradient(at 12% 18%, rgba(96, 192, 208, 0.38) 0px, transparent 55%),
+    radial-gradient(at 88% 15%, rgba(0, 185, 173, 0.28) 0px, transparent 55%),
+    radial-gradient(at 50% 90%, rgba(96, 192, 208, 0.22) 0px, transparent 60%),
+    linear-gradient(135deg, #EAF9FB 0%, #F4FCFD 50%, #E3F6F8 100%);
+}
+
+.bg-synora-surface {
+  background-color: #EDF8FA;
 }
 
 .tabular-nums {

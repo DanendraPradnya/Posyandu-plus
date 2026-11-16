@@ -272,17 +272,24 @@ function DaftarBalitaContent() {
   }, [profile, posyanduMap]);
 
   return (
-    <div className="min-h-screen p-4 space-y-5 pb-10">
-      {/* Area Header Synora Mesh (1 per layar) */}
-      <header className="bg-synora-mesh rounded-2xl p-5 border border-gray-200/80 space-y-3">
-        <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2">
-            <StatusBadge
-              status="Normal"
-              label={profile?.peran === "bidan" ? "Bidan Desa" : "Kader Posyandu"}
-            />
-            <span className="text-xs font-medium text-gray-700">
-              {assignedPosyanduName}
+    <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
+      {/* Area Header Klinis (1 per layar) */}
+      <header className="bg-synora-mesh relative overflow-hidden rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
+        {/* Top Floating Pill Navbar */}
+        <div className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/90 backdrop-blur-md border border-[#D5ECEF] px-4 sm:px-5 py-2 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+          <div className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00B9AD] to-[#60C0D0] text-white shadow-sm">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              </span>
+              <span className="text-sm font-bold tracking-tight text-[#0F292E]">
+                Posyandu<span className="text-[#00B9AD]">+</span>
+              </span>
+            </Link>
+            <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
+              {profile?.peran === "bidan" ? "Bidan Desa" : "Kader Posyandu"}
             </span>
           </div>
 
@@ -290,7 +297,7 @@ function DaftarBalitaContent() {
             {profile?.peran === "bidan" && (
               <Link
                 href="/bidan/kader"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-gray-300 bg-white px-3.5 py-2 text-xs font-semibold text-gray-900 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="inline-flex h-8 items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
               >
                 Kelola Kader
               </Link>
@@ -299,22 +306,56 @@ function DaftarBalitaContent() {
               type="button"
               onClick={handleSignOut}
               disabled={isSigningOut}
-              className="inline-flex min-h-[48px] min-w-[48px] items-center justify-center rounded-xl border border-gray-300 bg-white px-3.5 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 disabled:opacity-50"
+              className="inline-flex h-8 items-center justify-center rounded-full bg-[#0F292E] px-3.5 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50"
             >
               {isSigningOut ? "Keluar..." : "Keluar"}
             </button>
           </div>
         </div>
 
-        <div className="space-y-1">
-          <h1 className="text-[22px] font-bold tracking-tight text-gray-900">
-            Daftar Balita Posyandu
-          </h1>
-          <p className="text-sm text-gray-700">
-            {profile
-              ? `Petugas aktif: ${profile.nama}`
-              : "Memuat sesi petugas..."}
-          </p>
+        {/* Hero Main Split */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+          <div className="lg:col-span-7 space-y-2.5">
+            <p className="text-xs font-semibold text-[#00857C]">
+              {assignedPosyanduName} • {profile ? `Petugas: ${profile.nama}` : "Memuat sesi..."}
+            </p>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
+              Daftar Balita &amp; Pemantauan Gizi
+            </h1>
+            <div className="pt-1 flex flex-wrap items-center gap-2.5">
+              <Link
+                href="/balita/baru"
+                className="inline-flex h-10 items-center justify-center gap-1.5 rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+              >
+                <span aria-hidden="true" className="text-sm leading-none">+</span>
+                <span>Daftarkan Balita Baru</span>
+              </Link>
+              <Link
+                href="/"
+                className="inline-flex h-10 items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
+              >
+                Beranda
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 grid grid-cols-3 gap-2.5">
+            <StatCard
+              value={isLoading ? 0 : metrics.total}
+              label="Total Balita"
+              tone="default"
+            />
+            <StatCard
+              value={isLoading ? 0 : metrics.weighedThisMonth}
+              label="Ditimbang Bln Ini"
+              tone="success"
+            />
+            <StatCard
+              value={isLoading ? 0 : metrics.needsAttention}
+              label="Perlu Perhatian"
+              tone={metrics.needsAttention > 0 ? "warning" : "default"}
+            />
+          </div>
         </div>
       </header>
 
@@ -332,39 +373,9 @@ function DaftarBalitaContent() {
         />
       )}
 
-      {/* 3 Kartu Metrik Ringkas (Data Asli) */}
-      <section aria-label="Ringkasan Metrik Posyandu" className="grid grid-cols-3 gap-2.5">
-        <StatCard
-          value={isLoading ? 0 : metrics.total}
-          label="Total Balita Terdaftar"
-          tone="default"
-        />
-        <StatCard
-          value={isLoading ? 0 : metrics.weighedThisMonth}
-          label="Ditimbang Bulan Ini"
-          tone="success"
-        />
-        <StatCard
-          value={isLoading ? 0 : metrics.needsAttention}
-          label="Perlu Perhatian"
-          tone={metrics.needsAttention > 0 ? "warning" : "default"}
-        />
-      </section>
-
-      {/* Tombol Utama Registrasi Balita Baru */}
-      <div>
-        <Link
-          href="/balita/baru"
-          className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-gray-900 px-5 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-        >
-          <span aria-hidden="true" className="text-lg leading-none">+</span>
-          <span>Daftarkan Balita Baru</span>
-        </Link>
-      </div>
-
       {/* Bar Pencarian dan Pengurutan */}
-      <Card variant="white" padding="sm" className="space-y-3">
-        <div>
+      <Card variant="white" padding="sm" className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="flex-1">
           <label htmlFor="search-balita" className="sr-only">
             Cari nama balita, orang tua, atau banjar
           </label>
@@ -374,14 +385,14 @@ function DaftarBalitaContent() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari nama balita, orang tua, atau banjar..."
-            className="w-full min-h-[48px] rounded-full border border-gray-300 bg-[#F8FAFC] px-4 py-2.5 text-base text-gray-900 placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="w-full h-10 rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-sm text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
           />
         </div>
 
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2.5 md:w-72">
           <label
             htmlFor="sort-balita"
-            className="text-xs font-medium text-gray-700 shrink-0"
+            className="text-xs font-semibold text-[#4A666C] shrink-0"
           >
             Urutkan:
           </label>
@@ -389,7 +400,7 @@ function DaftarBalitaContent() {
             id="sort-balita"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="min-h-[48px] flex-1 rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+            className="h-10 flex-1 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
           >
             <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
             <option value="nama">Nama Balita (A - Z)</option>
@@ -398,9 +409,9 @@ function DaftarBalitaContent() {
       </Card>
 
       {/* Daftar Anak dengan 3 State Eksplisit: Loading, Error, Empty */}
-      <section aria-label="Daftar Anak" className="space-y-3">
+      <section aria-label="Daftar Anak" className="space-y-3.5">
         {isLoading ? (
-          <SkeletonCard count={4} lines={3} />
+          <SkeletonCard count={3} lines={3} />
         ) : errorMsg ? (
           <ErrorBox
             title="Gagal Memuat Daftar Balita"
@@ -422,7 +433,7 @@ function DaftarBalitaContent() {
             onAction={() => setSearchQuery("")}
           />
         ) : (
-          <ul className="space-y-3">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {filteredChildren.map((child) => {
               let ageMonths = 0;
               try {
@@ -441,36 +452,35 @@ function DaftarBalitaContent() {
                 <li key={child.id}>
                   <Link
                     href={`/balita/${child.id}`}
-                    className="block rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-colors hover:border-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+                    className="flex h-full flex-col justify-between rounded-2xl border border-[#D5ECEF] bg-white p-4 shadow-[0_1px_2px_rgba(15,41,46,0.03)] transition-all hover:border-[#60C0D0] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <div>
-                        <h2 className="text-base font-semibold text-gray-900">
+                        <h2 className="text-sm font-bold text-[#0F292E]">
                           {child.nama}
                         </h2>
-                        <p className="mt-0.5 text-xs text-gray-600">
+                        <p className="mt-0.5 text-xs text-[#4A666C]">
                           Orang Tua: {child.nama_ortu} • {child.banjar}
                         </p>
                       </div>
                       <StatusBadge status={badgeStatus} />
                     </div>
 
-                    <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-gray-100 pt-2.5 text-xs text-gray-700">
+                    <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 border-t border-[#EDF8FA] pt-2.5 text-xs text-[#4A666C]">
                       <div className="flex items-center gap-2">
                         <StatusBadge status={child.jenis_kelamin} />
-                        <span className="font-semibold tabular-nums text-gray-900">
-                          {ageMonths} bulan
+                        <span className="font-semibold tabular-nums text-[#0F292E]">
+                          {ageMonths} bln
                         </span>
                       </div>
 
-                      <div className="text-right tabular-nums text-gray-600">
+                      <div className="text-right tabular-nums text-[11px] text-[#4A666C]">
                         {child.latestMeasureDate ? (
                           <span>
-                            Ukur terakhir: {child.latestMeasureDate} (
-                            {child.latestWeightKg} kg)
+                            {child.latestMeasureDate} ({child.latestWeightKg} kg)
                           </span>
                         ) : (
-                          <span>Belum ada kunjungan ukur</span>
+                          <span>Belum diukur</span>
                         )}
                       </div>
                     </div>

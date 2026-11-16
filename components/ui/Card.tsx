@@ -6,9 +6,9 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const variantMap: Record<NonNullable<CardProps["variant"]>, string> = {
-  white: "bg-white border border-gray-200 shadow-sm",
-  surface: "bg-synora-surface border border-gray-200/80",
-  mesh: "bg-synora-mesh border border-gray-200/60",
+  white: "bg-white border border-[#D5ECEF] shadow-[0_1px_3px_rgba(15,41,46,0.04)]",
+  surface: "bg-[#EDF8FA] border border-[#C5E4E8]",
+  mesh: "bg-synora-mesh text-[#0F292E] border border-[#60C0D0]/40 shadow-sm",
 };
 
 const paddingMap: Record<NonNullable<CardProps["padding"]>, string> = {
@@ -50,15 +50,11 @@ export interface StatCardProps {
 }
 
 const toneValueMap: Record<NonNullable<StatCardProps["tone"]>, string> = {
-  default: "text-gray-900",
-  warning: "text-amber-800",
-  success: "text-green-800",
+  default: "text-[#0F292E]",
+  warning: "text-amber-700",
+  success: "text-[#009E94]",
 };
 
-/**
- * Kartu Metrik Ringkas gaya Synora:
- * Angka besar tabular-nums di bagian atas, garis pemisah tipis, dan label penjelas di bawah.
- */
 export function StatCard({
   value,
   label,
@@ -66,23 +62,22 @@ export function StatCard({
   subtitle,
 }: StatCardProps) {
   return (
-    <div className="flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-3.5 shadow-sm">
+    <div className="flex flex-col justify-between rounded-xl border border-[#D5ECEF] bg-white p-3.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
       <div
         className={[
-          "text-[28px] leading-tight font-bold tracking-tight tabular-nums",
+          "text-2xl leading-tight font-bold tracking-tight tabular-nums",
           toneValueMap[tone],
         ].join(" ")}
       >
         {value}
       </div>
-      <div className="my-2 border-t border-gray-100" />
+      <div className="my-2 border-t border-[#EDF8FA]" />
       <div>
-        <p className="text-xs font-medium leading-snug text-gray-700">{label}</p>
+        <p className="text-xs font-medium leading-snug text-[#4A666C]">{label}</p>
         {subtitle && (
-          <p className="mt-0.5 text-[11px] text-gray-500">{subtitle}</p>
+          <p className="mt-0.5 text-[11px] text-[#648288]">{subtitle}</p>
         )}
       </div>
     </div>
   );
 }
-

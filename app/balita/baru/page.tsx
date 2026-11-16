@@ -242,31 +242,40 @@ export default function RegistrasiBalitaBaruPage() {
   }
 
   return (
-    <div className="min-h-screen p-4 space-y-5 pb-12">
-      <div className="flex items-center justify-between">
-        <Link
-          href="/balita"
-          className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
-        >
-          <span aria-hidden="true">&larr;</span>
-          <span>Batal &amp; Kembali</span>
-        </Link>
-      </div>
-
-      {/* Header Synora Mesh (1 per layar) */}
-      <header className="bg-synora-mesh rounded-2xl p-5 border border-gray-200/80 space-y-2">
-        <div className="flex items-center justify-between gap-2">
-          <StatusBadge status="Normal" label="Form Registrasi & UU PDP" />
-          <span className="text-xs font-medium text-gray-700">
-            Rentang 0-59 Bulan
-          </span>
+    <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
+      {/* Header Klinis (1 per layar) */}
+      <header className="bg-synora-mesh rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-4">
+        <div className="flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/90 backdrop-blur-md border border-[#D5ECEF] px-4 sm:px-5 py-2 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00B9AD] to-[#60C0D0] text-white shadow-sm">
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </span>
+            <span className="text-sm font-bold tracking-tight text-[#0F292E]">
+              Posyandu<span className="text-[#00B9AD]">+</span>
+            </span>
+          </Link>
+          <Link
+            href="/balita"
+            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+          >
+            <span aria-hidden="true">&larr;</span>
+            <span>Batal &amp; Kembali</span>
+          </Link>
         </div>
-        <h1 className="text-[22px] font-bold tracking-tight text-gray-900">
-          Daftarkan Balita Baru
-        </h1>
-        <p className="text-sm text-gray-700">
-          Lengkapi identitas balita dan konfirmasi persetujuan eksplisit orang tua/wali sebelum menyimpan profil.
-        </p>
+
+        <div className="space-y-1.5 max-w-2xl">
+          <p className="text-xs font-semibold text-[#00857C]">
+            Form Registrasi &amp; UU PDP • Rentang 0–59 Bulan
+          </p>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
+            Daftarkan Balita Baru
+          </h1>
+          <p className="text-xs sm:text-sm text-[#4A666C]">
+            Lengkapi identitas balita dan konfirmasi persetujuan eksplisit orang tua/wali sebelum menyimpan profil.
+          </p>
+        </div>
       </header>
 
       {isLoadingInit ? (

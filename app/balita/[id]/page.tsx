@@ -110,11 +110,11 @@ export default function DetailBalitaPage() {
       : 0;
 
   return (
-    <div className="min-h-screen p-4 space-y-5 pb-10">
+    <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-5 pb-12">
       <div className="flex items-center justify-between">
         <Link
           href="/balita"
-          className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
+          className="inline-flex h-9 items-center gap-2 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
         >
           <span aria-hidden="true">&larr;</span>
           <span>Kembali ke Daftar Balita</span>
@@ -131,45 +131,45 @@ export default function DetailBalitaPage() {
         />
       ) : (
         <>
-          <header className="bg-synora-mesh rounded-2xl p-5 border border-gray-200/80 space-y-3">
+          <header className="bg-synora-mesh rounded-[24px] p-5 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-2.5">
             <div className="flex items-center justify-between gap-2 flex-wrap">
               <StatusBadge status={child.jenis_kelamin} />
-              <span className="text-xs font-semibold tabular-nums text-gray-800">
+              <span className="text-xs font-semibold tabular-nums text-[#00857C]">
                 Usia: {ageMonths} bulan
               </span>
             </div>
             <div>
-              <h1 className="text-[22px] font-bold tracking-tight text-gray-900">
+              <h1 className="text-2xl font-bold tracking-tight text-[#0F292E]">
                 {child.nama}
               </h1>
-              <p className="text-sm text-gray-700">
-                Tanggal Lahir: <span className="tabular-nums font-medium">{child.tgl_lahir}</span>
+              <p className="text-xs sm:text-sm text-[#4A666C]">
+                Tanggal Lahir: <span className="tabular-nums font-semibold text-[#0F292E]">{child.tgl_lahir}</span>
               </p>
             </div>
           </header>
 
           <Card variant="white" padding="md" className="space-y-2.5">
-            <h2 className="text-base font-semibold text-gray-900">
+            <h2 className="text-sm font-bold text-[#0F292E]">
               Informasi Keluarga &amp; Posyandu
             </h2>
-            <dl className="grid grid-cols-1 gap-2 text-sm">
-              <div className="flex justify-between border-b border-gray-100 pb-1.5">
-                <dt className="text-gray-600">Nama Orang Tua / Wali</dt>
-                <dd className="font-medium text-gray-900">{child.nama_ortu}</dd>
+            <dl className="grid grid-cols-1 gap-2 text-xs sm:text-sm">
+              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C]">Nama Orang Tua / Wali</dt>
+                <dd className="font-semibold text-[#0F292E]">{child.nama_ortu}</dd>
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-1.5">
-                <dt className="text-gray-600">Banjar / Dusun</dt>
-                <dd className="font-medium text-gray-900">{child.banjar}</dd>
+              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C]">Banjar / Dusun</dt>
+                <dd className="font-semibold text-[#0F292E]">{child.banjar}</dd>
               </div>
-              <div className="flex justify-between border-b border-gray-100 pb-1.5">
-                <dt className="text-gray-600">Posyandu</dt>
-                <dd className="font-medium text-gray-900">
+              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C]">Posyandu</dt>
+                <dd className="font-semibold text-[#0F292E]">
                   {posyandu?.nama ?? child.posyandu_id}
                 </dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-gray-600">Persetujuan UU PDP</dt>
-                <dd className="font-medium text-[#15803D] tabular-nums">
+                <dt className="text-[#4A666C]">Persetujuan UU PDP</dt>
+                <dd className="font-semibold text-[#009E94] tabular-nums">
                   Tercatat ({child.consent_at.slice(0, 10)})
                 </dd>
               </div>
@@ -177,7 +177,7 @@ export default function DetailBalitaPage() {
           </Card>
 
           <section className="space-y-3">
-            <h2 className="text-base font-semibold text-gray-900">
+            <h2 className="text-sm font-bold text-[#0F292E]">
               Riwayat Kunjungan Antropometri ({measurements.length})
             </h2>
             {measurements.length === 0 ? (
