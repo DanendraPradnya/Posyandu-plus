@@ -5,7 +5,13 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
-import type { Child, Measurement, Posyandu } from "@/lib/types";
+import type {
+  Child,
+  HealthProfile,
+  Measurement,
+  Posyandu,
+  ZScoreResult,
+} from "@/lib/types";
 import {
   Card,
   EmptyState,
@@ -13,6 +19,8 @@ import {
   SkeletonCard,
   StatusBadge,
 } from "@/components/ui";
+import { HealthProfileCard } from "@/components/health/HealthProfileCard";
+import { KmsChart } from "@/components/kms/KmsChart";
 
 function getTodayIso(): string {
   const now = new Date();
@@ -30,6 +38,10 @@ export default function DetailBalitaPage() {
   const [child, setChild] = useState<Child | null>(null);
   const [posyandu, setPosyandu] = useState<Posyandu | null>(null);
   const [measurements, setMeasurements] = useState<Measurement[]>([]);
+  const [healthProfile, setHealthProfile] = useState<HealthProfile | null>(null);
+  const [zscoresByMeasurement, setZscoresByMeasurement] = useState<
+    Record<string, ZScoreResult[]>
+  >({});
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -87,7 +99,36 @@ export default function DetailBalitaPage() {
         throw new Error(mErr.message);
       }
 
-      setMeasurements((mRows ?? []) as Measurement[]);
+      const loadedMeasurements = (mRows ?? []) as Measurement[];
+      setMeasurements(loadedMeasurements);
+
+      if (loadedMeasurements.length > 0) {
+        const measurementIds = loadedMeasurements.map((m) => m.id);
+        const { data: zRows } = await supabase
+          .from("zscores")
+          .select("*")
+          .in("measurement_id", measurementIds);
+
+        const grouped: Record<string, ZScoreResult[]> = {};
+        for (const z of (zRows ?? []) as ZScoreResult[]) {
+          const mid = z.measurement_id ?? "";
+          if (!grouped[mid]) grouped[mid] = [];
+          grouped[mid].push(z);
+        }
+        setZscoresByMeasurement(grouped);
+      } else {
+        setZscoresByMeasurement({});
+      }
+
+      const { data: hpRow } = await supabase
+        .from("health_profiles")
+        .select("*")
+        .eq("child_id", childId)
+        .order("dihitung_pada", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      setHealthProfile((hpRow ?? null) as HealthProfile | null);
     } catch (err: unknown) {
       setErrorMsg(
         err instanceof Error
@@ -176,7 +217,36 @@ export default function DetailBalitaPage() {
             </dl>
           </Card>
 
+          <HealthProfileCard profile={healthProfile} />
+
+          <KmsChart
+            sex={child.jenis_kelamin}
+            currentAgeMonths={ageMonths}
+            measurements={measurements}
+          />
+
           <section className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Link
+                href={`/balita/${child.id}/ukur?mode=foto`}
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#00B9AD] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#009E94] active:bg-[#00857C]"
+              >
+                Scan Foto Buku KIA
+              </Link>
+              <Link
+                href={`/balita/${child.id}/ukur?mode=manual`}
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#C5E4E8] bg-white px-5 py-2.5 text-sm font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+              >
+                Input Manual
+              </Link>
+              <Link
+                href={`/balita/${child.id}/hasil`}
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#00B9AD] bg-[#EDF8FA] px-5 py-2.5 text-sm font-semibold text-[#00857C] hover:bg-[#DCEEEF]"
+              >
+                Halaman Hasil &amp; Bagikan
+              </Link>
+            </div>
+
             <h2 className="text-sm font-bold text-[#0F292E]">
               Riwayat Kunjungan Antropometri ({measurements.length})
             </h2>
@@ -187,32 +257,54 @@ export default function DetailBalitaPage() {
               />
             ) : (
               <ul className="space-y-2.5">
-                {measurements.map((m) => (
-                  <li key={m.id}>
-                    <Card variant="white" padding="md" className="space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-semibold tabular-nums text-gray-900">
-                          Tanggal Ukur: {m.tgl_ukur}
-                        </span>
-                        <span className="text-xs font-medium tabular-nums text-gray-600">
-                          Usia {m.usia_bulan} bln
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-4 text-xs text-gray-700 tabular-nums">
-                        <span>BB: <strong>{m.bb_kg} kg</strong></span>
-                        {m.pb_tb_cm !== null && (
-                          <span>PB/TB: <strong>{m.pb_tb_cm} cm</strong></span>
+                {measurements.map((m) => {
+                  const rowZScores = zscoresByMeasurement[m.id] ?? [];
+                  return (
+                    <li key={m.id}>
+                      <Card variant="white" padding="md" className="space-y-2">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <span className="text-sm font-semibold tabular-nums text-gray-900">
+                            Tanggal Ukur: {m.tgl_ukur}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="rounded-full bg-[#EDF8FA] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
+                              {m.sumber === "AI" ? "Foto KIA" : "Manual"}
+                            </span>
+                            <span className="text-xs font-medium tabular-nums text-gray-600">
+                              Usia {m.usia_bulan} bln
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-4 text-xs text-gray-700 tabular-nums">
+                          <span>BB: <strong>{m.bb_kg} kg</strong></span>
+                          {m.pb_tb_cm !== null && (
+                            <span>PB/TB: <strong>{m.pb_tb_cm} cm</strong></span>
+                          )}
+                          {m.lk_cm !== null && (
+                            <span>LK: <strong>{m.lk_cm} cm</strong></span>
+                          )}
+                          {m.lila_cm !== null && (
+                            <span>LiLA: <strong>{m.lila_cm} cm</strong></span>
+                          )}
+                        </div>
+                        {rowZScores.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 pt-1 border-t border-[#EDF8FA]">
+                            {rowZScores.map((z, idx) => (
+                              <span
+                                key={`${z.indikator}-${idx}`}
+                                className="rounded-lg bg-[#F7FBFC] border border-[#DCEEEF] px-2 py-1 text-[11px] text-[#0F292E] tabular-nums"
+                              >
+                                <strong>{z.indikator}</strong>:{" "}
+                                {z.nilai_z !== null ? `${z.nilai_z.toFixed(2)} SD` : "-"} (
+                                {z.klasifikasi})
+                              </span>
+                            ))}
+                          </div>
                         )}
-                        {m.lk_cm !== null && (
-                          <span>LK: <strong>{m.lk_cm} cm</strong></span>
-                        )}
-                        {m.lila_cm !== null && (
-                          <span>LiLA: <strong>{m.lila_cm} cm</strong></span>
-                        )}
-                      </div>
-                    </Card>
-                  </li>
-                ))}
+                      </Card>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </section>
