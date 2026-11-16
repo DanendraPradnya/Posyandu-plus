@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description:
     "Sistem deteksi dini risiko stunting dan pemantauan pertumbuhan balita (0-59 bulan) berbasis Mobile-First PWA",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icons/posyandu-logo.png",
+    apple: "/icons/icon-192x192.png",
+  },
 };
 
 export const viewport: Viewport = {

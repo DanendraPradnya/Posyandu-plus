@@ -297,7 +297,7 @@ export function KmsChart({
           <button
             type="button"
             onClick={() => setKmsRange("0-2")}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[36px] ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[44px] ${
               kmsRange === "0-2"
                 ? "bg-[#00B9AD] text-white"
                 : "text-[#4A666C]"
@@ -308,7 +308,7 @@ export function KmsChart({
           <button
             type="button"
             onClick={() => setKmsRange("2-5")}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[36px] ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[44px] ${
               kmsRange === "2-5"
                 ? "bg-[#00B9AD] text-white"
                 : "text-[#4A666C]"

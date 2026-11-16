@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
-import { Card, ErrorBox, SkeletonCard, StatusBadge } from "@/components/ui";
+import { BrandLogo, Card, ErrorBox, SkeletonCard, StatusBadge } from "@/components/ui";
 import { HealthProfileCard } from "@/components/health/HealthProfileCard";
 import { KmsChart } from "@/components/kms/KmsChart";
 import { ShareLinkManager } from "@/components/share/ShareLinkManager";
@@ -86,7 +86,8 @@ export default function HalamanHasilAnakPage() {
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-5 pb-12">
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-3 rounded-full bg-white border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+        <BrandLogo href="/" size="md" />
         <Link
           href={`/balita/${childId}`}
           className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"

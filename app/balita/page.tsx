@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
 import type { OverallHealthStatus, Posyandu, Sex, UserProfile } from "@/lib/types";
 import {
+  BrandLogo,
   Card,
   EmptyState,
   ErrorBox,
@@ -276,18 +277,9 @@ function DaftarBalitaContent() {
       {/* Area Header Klinis (1 per layar) */}
       <header className="bg-synora-mesh relative overflow-hidden rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
         {/* Top Floating Pill Navbar */}
-        <div className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/90 backdrop-blur-md border border-[#D5ECEF] px-4 sm:px-5 py-2 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+        <div className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
           <div className="flex items-center gap-2.5">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00B9AD] to-[#60C0D0] text-white shadow-sm">
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </span>
-              <span className="text-sm font-bold tracking-tight text-[#0F292E]">
-                Posyandu<span className="text-[#00B9AD]">+</span>
-              </span>
-            </Link>
+            <BrandLogo href="/" size="md" />
             <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
               {profile?.peran === "bidan" ? "Bidan Desa" : "Kader Posyandu"}
             </span>
@@ -297,7 +289,7 @@ function DaftarBalitaContent() {
             {profile?.peran === "bidan" && (
               <Link
                 href="/bidan/kader"
-                className="inline-flex h-8 items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
               >
                 Kelola Kader
               </Link>
@@ -306,7 +298,7 @@ function DaftarBalitaContent() {
               type="button"
               onClick={handleSignOut}
               disabled={isSigningOut}
-              className="inline-flex h-8 items-center justify-center rounded-full bg-[#0F292E] px-3.5 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-4 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50"
             >
               {isSigningOut ? "Keluar..." : "Keluar"}
             </button>
@@ -316,7 +308,7 @@ function DaftarBalitaContent() {
         {/* Hero Main Split */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
           <div className="lg:col-span-7 space-y-2.5">
-            <p className="text-xs font-semibold text-[#00857C]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[#00857C]">
               {assignedPosyanduName} • {profile ? `Petugas: ${profile.nama}` : "Memuat sesi..."}
             </p>
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
@@ -325,14 +317,14 @@ function DaftarBalitaContent() {
             <div className="pt-1 flex flex-wrap items-center gap-2.5">
               <Link
                 href="/balita/baru"
-                className="inline-flex h-10 items-center justify-center gap-1.5 rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+                className="inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
               >
                 <span aria-hidden="true" className="text-sm leading-none">+</span>
                 <span>Daftarkan Balita Baru</span>
               </Link>
               <Link
                 href="/"
-                className="inline-flex h-10 items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
               >
                 Beranda
               </Link>
@@ -385,7 +377,7 @@ function DaftarBalitaContent() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari nama balita, orang tua, atau banjar..."
-            className="w-full h-10 rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-sm text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            className="w-full min-h-[48px] rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-base text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
           />
         </div>
 
@@ -400,7 +392,7 @@ function DaftarBalitaContent() {
             id="sort-balita"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="h-10 flex-1 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            className="min-h-[48px] flex-1 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-base font-medium text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
           >
             <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
             <option value="nama">Nama Balita (A - Z)</option>

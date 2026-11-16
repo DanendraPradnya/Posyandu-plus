@@ -12,6 +12,7 @@ import {
 } from "@/lib/validation/child-registration";
 import type { Posyandu, Sex, UserProfile } from "@/lib/types";
 import {
+  BrandLogo,
   Button,
   Card,
   ErrorBox,
@@ -245,20 +246,11 @@ export default function RegistrasiBalitaBaruPage() {
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
       {/* Header Klinis (1 per layar) */}
       <header className="bg-synora-mesh rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-4">
-        <div className="flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/90 backdrop-blur-md border border-[#D5ECEF] px-4 sm:px-5 py-2 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00B9AD] to-[#60C0D0] text-white shadow-sm">
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </span>
-            <span className="text-sm font-bold tracking-tight text-[#0F292E]">
-              Posyandu<span className="text-[#00B9AD]">+</span>
-            </span>
-          </Link>
+        <div className="flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+          <BrandLogo href="/" size="md" />
           <Link
             href="/balita"
-            className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+            className="inline-flex min-h-[48px] items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
           >
             <span aria-hidden="true">&larr;</span>
             <span>Batal &amp; Kembali</span>
@@ -266,8 +258,8 @@ export default function RegistrasiBalitaBaruPage() {
         </div>
 
         <div className="space-y-1.5 max-w-2xl">
-          <p className="text-xs font-semibold text-[#00857C]">
-            Form Registrasi &amp; UU PDP • Rentang 0–59 Bulan
+          <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[#00857C]">
+            Form Registrasi &amp; UU PDP • Rentang 0-59 Bulan
           </p>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
             Daftarkan Balita Baru

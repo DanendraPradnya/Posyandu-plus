@@ -23,7 +23,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 const sizeClasses: Record<ButtonSize, string> = {
   default: "min-h-[48px] min-w-[48px] px-5 py-2.5 text-sm font-semibold",
-  sm: "min-h-[38px] min-w-[38px] px-3.5 py-2 text-xs font-semibold",
+  sm: "min-h-[48px] min-w-[48px] px-4 py-2 text-xs font-semibold",
 };
 
 export function Button({

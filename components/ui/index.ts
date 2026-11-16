@@ -3,4 +3,4 @@ export * from "./Input";
 export * from "./Card";
 export * from "./StatusBadge";
 export * from "./FeedbackStates";
-
+export * from "./BrandLogo";

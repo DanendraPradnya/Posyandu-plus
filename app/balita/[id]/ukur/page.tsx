@@ -4,7 +4,7 @@ import React, { Suspense, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Button, Card, ErrorBox, SkeletonCard } from "@/components/ui";
+import { BrandLogo, Button, Card, ErrorBox, SkeletonCard } from "@/components/ui";
 import { CameraCaptureCrop } from "@/components/measurement/CameraCaptureCrop";
 import { VerificationSideBySide } from "@/components/measurement/VerificationSideBySide";
 import { ManualMeasurementForm } from "@/components/measurement/ManualMeasurementForm";
@@ -261,7 +261,8 @@ function UkurBalitaContent() {
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-5 pb-12">
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-3 rounded-full bg-white border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+        <BrandLogo href="/" size="md" />
         <Link
           href={`/balita/${childId}`}
           className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"

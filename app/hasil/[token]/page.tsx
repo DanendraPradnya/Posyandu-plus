@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { createAdminClient } from "@/lib/supabase/server";
 import { hashShareToken, maskChildName } from "@/lib/share/token";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
-import { Card, StatusBadge } from "@/components/ui";
+import { BrandLogo, Card, StatusBadge } from "@/components/ui";
 import { HealthProfileCard } from "@/components/health/HealthProfileCard";
 import { KmsChart } from "@/components/kms/KmsChart";
 import type { HealthProfile, Measurement, Sex } from "@/lib/types";
@@ -112,12 +112,15 @@ export default async function PublicShareResultPage({
 
   return (
     <main className="min-h-screen px-4 sm:px-6 py-5 space-y-5 pb-12 max-w-2xl mx-auto">
-      <header className="bg-synora-mesh rounded-[24px] p-5 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-2">
+      <header className="bg-synora-mesh rounded-[24px] p-5 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-3">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <StatusBadge status={child.jenis_kelamin as Sex} />
-          <span className="text-xs font-semibold tabular-nums text-[#00857C]">
-            Usia: {ageMonths} bulan
-          </span>
+          <BrandLogo href={undefined} size="sm" subtitle="Hasil Pemantauan" />
+          <div className="flex items-center gap-2">
+            <StatusBadge status={child.jenis_kelamin as Sex} />
+            <span className="text-xs font-semibold tabular-nums text-[#00857C]">
+              Usia: {ageMonths} bulan
+            </span>
+          </div>
         </div>
         <h1 className="text-xl font-bold text-[#0F292E]">
           Hasil Pertumbuhan: {maskedName}
