@@ -40,7 +40,7 @@ export function Input({
             error ? errorId : helperText ? helperId : undefined
           }
           className={[
-            "w-full min-h-[42px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E] placeholder:text-[#7A969C]",
+            "w-full min-h-[48px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E] placeholder:text-[#7A969C]",
             "transition-colors duration-150",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
             "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",
@@ -120,7 +120,7 @@ export function Select({
           error ? errorId : helperText ? helperId : undefined
         }
         className={[
-          "w-full min-h-[42px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E]",
+          "w-full min-h-[48px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E]",
           "transition-colors duration-150",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
           "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",
