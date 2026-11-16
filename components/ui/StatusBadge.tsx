@@ -46,9 +46,9 @@ const badgeStyleMap: Record<
     defaultLabel: "Kritis",
   },
   "Belum Diukur": {
-    bg: "bg-gray-100 border-gray-300",
-    text: "text-gray-700",
-    dot: "bg-gray-500",
+    bg: "bg-[#EDF8FA] border-[#C5E4E8]",
+    text: "text-[#4A666C]",
+    dot: "bg-[#60C0D0]",
     defaultLabel: "Belum Diukur",
   },
   Aktif: {

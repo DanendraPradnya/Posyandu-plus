@@ -278,34 +278,68 @@ export default function ManajemenKaderPage() {
   }
 
   return (
-    <div className="min-h-screen p-4 space-y-5 pb-12">
-      <div className="flex items-center justify-between gap-2">
-        <Link
-          href="/balita"
-          className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
-        >
-          <span aria-hidden="true">&larr;</span>
-          <span>Daftar Balita</span>
-        </Link>
-      </div>
-
-      {/* Header Synora Mesh (1 per layar) */}
-      <header className="bg-synora-mesh rounded-2xl p-5 border border-gray-200/80 space-y-3">
-        <div className="flex items-center justify-between gap-2">
-          <StatusBadge status="Normal" label="Panel Khusus Bidan" />
-          <span className="text-xs font-medium text-gray-700">
-            Audit Log Aktif
-          </span>
+    <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
+      {/* Header Klinis (1 per layar) */}
+      <header className="bg-synora-mesh rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
+        <div className="flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/90 backdrop-blur-md border border-[#D5ECEF] px-4 sm:px-5 py-2 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-[#00B9AD] to-[#60C0D0] text-white shadow-sm">
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </span>
+            <span className="text-sm font-bold tracking-tight text-[#0F292E]">
+              Posyandu<span className="text-[#00B9AD]">+</span>
+            </span>
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/balita"
+              className="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+            >
+              <span aria-hidden="true">&larr;</span>
+              <span>Daftar Balita</span>
+            </Link>
+          </div>
         </div>
-        <div className="space-y-1">
-          <h1 className="text-[22px] font-bold tracking-tight text-gray-900">
-            Manajemen Akun Kader
-          </h1>
-          <p className="text-sm text-gray-700">
-            {bidanProfile
-              ? `Bidan Pembina: ${bidanProfile.nama}`
-              : "Kelola penugasan Posyandu dan status aktif akun Kader wilayah."}
-          </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+          <div className="lg:col-span-7 space-y-2">
+            <p className="text-xs font-semibold text-[#00857C]">
+              Panel Khusus Bidan • Audit Log Aktif
+            </p>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
+              Manajemen Akun Kader
+            </h1>
+            <p className="text-xs sm:text-sm text-[#4A666C]">
+              {bidanProfile
+                ? `Bidan Pembina: ${bidanProfile.nama}`
+                : "Kelola penugasan Posyandu dan status aktif akun Kader wilayah."}
+            </p>
+            <div className="pt-1">
+              <Button variant="primary" size="sm" onClick={openCreateDialog}>
+                + Tambah Akun Kader Baru
+              </Button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 grid grid-cols-3 gap-2.5">
+            <StatCard
+              value={isLoading ? 0 : metrics.total}
+              label="Total Kader"
+              tone="default"
+            />
+            <StatCard
+              value={isLoading ? 0 : metrics.active}
+              label="Kader Aktif"
+              tone="success"
+            />
+            <StatCard
+              value={isLoading ? 0 : metrics.inactive}
+              label="Nonaktif"
+              tone={metrics.inactive > 0 ? "warning" : "default"}
+            />
+          </div>
         </div>
       </header>
 
@@ -316,32 +350,6 @@ export default function ManajemenKaderPage() {
           onDismiss={() => setToastInfo(null)}
         />
       )}
-
-      {/* 3 Kartu Metrik Ringkas */}
-      <section aria-label="Ringkasan Akun Kader" className="grid grid-cols-3 gap-2.5">
-        <StatCard
-          value={isLoading ? 0 : metrics.total}
-          label="Total Akun Kader"
-          tone="default"
-        />
-        <StatCard
-          value={isLoading ? 0 : metrics.active}
-          label="Kader Aktif"
-          tone="success"
-        />
-        <StatCard
-          value={isLoading ? 0 : metrics.inactive}
-          label="Nonaktif"
-          tone={metrics.inactive > 0 ? "warning" : "default"}
-        />
-      </section>
-
-      {/* Tombol Utama Tambah Kader Baru */}
-      <div>
-        <Button variant="primary" fullWidth onClick={openCreateDialog}>
-          + Tambah Akun Kader Baru
-        </Button>
-      </div>
 
       {/* Panel Form Aksi Administratif (Modal / Inline Panel dengan Aksesibilitas Keyboard) */}
       {activeDialog && (
@@ -499,7 +507,7 @@ export default function ManajemenKaderPage() {
             onAction={openCreateDialog}
           />
         ) : (
-          <ul className="space-y-3">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {kaderList.map((kader) => {
               const assignedPosyandu = kader.posyandu_ditugaskan
                 ? posyanduMap[kader.posyandu_ditugaskan]

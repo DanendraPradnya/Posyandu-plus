@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Posyandu+ | Deteksi Dini Risiko Stunting",
@@ -11,7 +19,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#111827",
+  themeColor: "#00B9AD",
 };
 
 export default function RootLayout({
@@ -20,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
-      <body className="min-h-screen bg-[#F8FAFC] text-[#111827] antialiased">
-        <main className="mx-auto min-h-screen w-full max-w-[420px] md:max-w-[768px] bg-[#F8FAFC]">
+    <html lang="id" className={plusJakartaSans.variable}>
+      <body className="min-h-screen bg-[#F7FBFC] text-[#0F292E] antialiased selection:bg-[#60C0D0]/30 selection:text-[#0F292E]">
+        <main className="mx-auto min-h-screen w-full max-w-[1120px] bg-[#F7FBFC]">
           {children}
         </main>
       </body>

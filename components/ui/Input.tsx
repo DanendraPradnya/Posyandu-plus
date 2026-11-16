@@ -25,10 +25,10 @@ export function Input({
     <div className="w-full space-y-1.5">
       <label
         htmlFor={inputId}
-        className="block text-sm font-medium text-gray-900"
+        className="block text-xs font-semibold text-[#0F292E]"
       >
         {label}
-        {required && <span className="ml-1 text-red-700" aria-hidden="true">*</span>}
+        {required && <span className="ml-1 text-red-600" aria-hidden="true">*</span>}
       </label>
 
       <div className="relative flex items-center">
@@ -40,13 +40,13 @@ export function Input({
             error ? errorId : helperText ? helperId : undefined
           }
           className={[
-            "w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-base text-gray-900 placeholder:text-gray-400",
+            "w-full min-h-[42px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E] placeholder:text-[#7A969C]",
             "transition-colors duration-150",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:border-gray-900",
-            "disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
+            "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",
             error
-              ? "border-red-600 focus-visible:ring-red-700"
-              : "border-gray-300",
+              ? "border-red-500 focus-visible:ring-red-600"
+              : "border-[#C5E4E8]",
             rightElement ? "pr-14" : "",
             className,
           ]
@@ -62,11 +62,11 @@ export function Input({
       </div>
 
       {error ? (
-        <p id={errorId} role="alert" className="text-xs font-medium text-red-700">
+        <p id={errorId} role="alert" className="text-xs font-medium text-red-600">
           {error}
         </p>
       ) : helperText ? (
-        <p id={helperId} className="text-xs text-gray-600">
+        <p id={helperId} className="text-xs text-[#4A666C]">
           {helperText}
         </p>
       ) : null}
@@ -106,10 +106,10 @@ export function Select({
     <div className="w-full space-y-1.5">
       <label
         htmlFor={selectId}
-        className="block text-sm font-medium text-gray-900"
+        className="block text-xs font-semibold text-[#0F292E]"
       >
         {label}
-        {required && <span className="ml-1 text-red-700" aria-hidden="true">*</span>}
+        {required && <span className="ml-1 text-red-600" aria-hidden="true">*</span>}
       </label>
 
       <select
@@ -120,11 +120,11 @@ export function Select({
           error ? errorId : helperText ? helperId : undefined
         }
         className={[
-          "w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-base text-gray-900",
+          "w-full min-h-[42px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E]",
           "transition-colors duration-150",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:border-gray-900",
-          "disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed",
-          error ? "border-red-600 focus-visible:ring-red-700" : "border-gray-300",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
+          "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",
+          error ? "border-red-500 focus-visible:ring-red-600" : "border-[#C5E4E8]",
           className,
         ]
           .filter(Boolean)
@@ -144,15 +144,14 @@ export function Select({
       </select>
 
       {error ? (
-        <p id={errorId} role="alert" className="text-xs font-medium text-red-700">
+        <p id={errorId} role="alert" className="text-xs font-medium text-red-600">
           {error}
         </p>
       ) : helperText ? (
-        <p id={helperId} className="text-xs text-gray-600">
+        <p id={helperId} className="text-xs text-[#4A666C]">
           {helperText}
         </p>
       ) : null}
     </div>
   );
 }
-
