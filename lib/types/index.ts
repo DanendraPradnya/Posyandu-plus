@@ -195,7 +195,7 @@ export interface KiaExtractionOutput {
   schema_version: "1.0";
   halaman_terdeteksi: "tabel_pertumbuhan" | "catatan_lila" | "gabungan" | "tidak_dikenali";
   baris_kunjungan: ExtractedVisitRow[];
-  catatan_ekstraksi?: string;
+  catatan_ekstraksi?: string | null;
 }
 
 export interface ExtractionJob {
