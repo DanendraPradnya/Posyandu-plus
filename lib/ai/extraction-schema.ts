@@ -1,7 +1,7 @@
 /**
- * Skema Validasi & Structured Output Ekstraksi Buku KIA (F0-07)
+ * Skema Validasi & OpenAI Structured Outputs Ekstraksi Buku KIA (F0-07)
  * Mengacu pada FR4 PRD Posyandu+ v2.2 (hal. 127 Tabel Pemantauan Pertumbuhan & hal. 128 LiLA).
- * Versi Skema: 1.0 (Dikunci pada Fase 0)
+ * Versi Skema: 1.0 (Dikunci pada Fase 0, kompatibel penuh dengan OpenAI strict: true)
  */
 
 import { z } from "zod";
@@ -53,11 +53,13 @@ export const kiaExtractionOutputSchema = z.object({
     "tidak_dikenali",
   ]),
   baris_kunjungan: z.array(extractedVisitRowSchema),
-  catatan_ekstraksi: z.string().optional(),
+  catatan_ekstraksi: z.string().nullable().optional(),
 });
 
 /**
- * JSON Schema untuk parameter `responseSchema` / `response_format` pada Gemini Flash Vision / OpenAI Vision.
+ * JSON Schema untuk parameter `response_format` / `text.format` pada OpenAI Vision API
+ * dengan mode Structured Outputs (`strict: true`, `additionalProperties: false`,
+ * dan seluruh properti tercantum di dalam `required`).
  */
 export const KIA_EXTRACTION_JSON_SCHEMA = {
   type: "object",
@@ -80,6 +82,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           bb_kg: {
             type: "object",
@@ -88,6 +91,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           pb_tb_cm: {
             type: "object",
@@ -96,6 +100,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           cara_ukur: {
             type: "object",
@@ -104,6 +109,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           lk_cm: {
             type: "object",
@@ -112,6 +118,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           lila_cm: {
             type: "object",
@@ -120,6 +127,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           imunisasi: {
             type: "object",
@@ -128,6 +136,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
           asi_eksklusif: {
             type: "object",
@@ -136,6 +145,7 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
               confidence: { type: "number", minimum: 0, maximum: 1 },
             },
             required: ["value", "confidence"],
+            additionalProperties: false,
           },
         },
         required: [
@@ -149,9 +159,32 @@ export const KIA_EXTRACTION_JSON_SCHEMA = {
           "imunisasi",
           "asi_eksklusif",
         ],
+        additionalProperties: false,
       },
     },
-    catatan_ekstraksi: { type: "string" },
+    catatan_ekstraksi: {
+      type: ["string", "null"],
+      description: "Catatan tambahan dari hasil ekstraksi halaman KIA, atau null jika tidak ada",
+    },
   },
-  required: ["schema_version", "halaman_terdeteksi", "baris_kunjungan"],
+  required: [
+    "schema_version",
+    "halaman_terdeteksi",
+    "baris_kunjungan",
+    "catatan_ekstraksi",
+  ],
+  additionalProperties: false,
+} as const;
+
+/**
+ * Konfigurasi siap pakai untuk parameter `response_format` OpenAI Chat Completions API.
+ */
+export const OPENAI_KIA_RESPONSE_FORMAT = {
+  type: "json_schema",
+  json_schema: {
+    name: "kia_extraction",
+    description: "Hasil ekstraksi terstruktur halaman pemantauan pertumbuhan dan LiLA Buku KIA",
+    strict: true,
+    schema: KIA_EXTRACTION_JSON_SCHEMA,
+  },
 } as const;

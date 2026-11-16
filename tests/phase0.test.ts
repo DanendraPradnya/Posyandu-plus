@@ -1,10 +1,30 @@
 import { describe, it, expect } from "vitest";
 import fs from "fs";
 import path from "path";
-import { EXTRACTION_SCHEMA_VERSION, kiaExtractionOutputSchema } from "../lib/ai/extraction-schema";
+import {
+  EXTRACTION_SCHEMA_VERSION,
+  KIA_EXTRACTION_JSON_SCHEMA,
+  OPENAI_KIA_RESPONSE_FORMAT,
+  kiaExtractionOutputSchema,
+} from "../lib/ai/extraction-schema";
 
 describe("Verifikasi Gerbang Fase 0 (Data Referensi & Kontrak)", () => {
   const baseDir = path.resolve(__dirname, "..");
+
+  it("F0-02: .env.example mengonfigurasi OpenAI Full (Vision & Text) tanpa variabel Gemini usang", () => {
+    const envExamplePath = path.join(baseDir, ".env.example");
+    expect(fs.existsSync(envExamplePath)).toBe(true);
+    const content = fs.readFileSync(envExamplePath, "utf-8");
+
+    expect(content).toContain("OPENAI_API_KEY=");
+    expect(content).toContain("OPENAI_VISION_MODEL=");
+    expect(content).toContain("OPENAI_VISION_FALLBACK_MODEL=");
+    expect(content).toContain("OPENAI_TEXT_MODEL=");
+
+    expect(content).not.toContain("GEMINI_API_KEY");
+    expect(content).not.toContain("GEMINI_VISION_MODEL");
+    expect(content).not.toContain("GEMINI_TEXT_MODEL");
+  });
 
   it("F0-03: ref_lms.csv tersedia dan memuat seluruh indikator wajib", () => {
     const lmsPath = path.join(baseDir, "ref", "ref_lms.csv");
@@ -37,7 +57,7 @@ describe("Verifikasi Gerbang Fase 0 (Data Referensi & Kontrak)", () => {
     expect(data.fixtures.length).toBeGreaterThanOrEqual(200);
   });
 
-  it("F0-07: Skema JSON ekstraksi KIA v1.0 memvalidasi contoh keluaran dengan benar", () => {
+  it("F0-07: Skema JSON ekstraksi KIA v1.0 memvalidasi contoh keluaran dan patuh pada OpenAI Structured Outputs (strict: true)", () => {
     const sample = {
       schema_version: EXTRACTION_SCHEMA_VERSION,
       halaman_terdeteksi: "tabel_pertumbuhan",
@@ -54,8 +74,32 @@ describe("Verifikasi Gerbang Fase 0 (Data Referensi & Kontrak)", () => {
           asi_eksklusif: { value: true, confidence: 0.98 },
         },
       ],
+      catatan_ekstraksi: null,
     };
     const parsed = kiaExtractionOutputSchema.safeParse(sample);
     expect(parsed.success).toBe(true);
+
+    // Verifikasi kepatuhan OpenAI Structured Outputs (strict: true)
+    expect(OPENAI_KIA_RESPONSE_FORMAT.type).toBe("json_schema");
+    expect(OPENAI_KIA_RESPONSE_FORMAT.json_schema.strict).toBe(true);
+    expect(KIA_EXTRACTION_JSON_SCHEMA.additionalProperties).toBe(false);
+
+    const rootProps = Object.keys(KIA_EXTRACTION_JSON_SCHEMA.properties);
+    for (const key of rootProps) {
+      expect(KIA_EXTRACTION_JSON_SCHEMA.required).toContain(key);
+    }
+
+    const rowItemSchema = KIA_EXTRACTION_JSON_SCHEMA.properties.baris_kunjungan.items;
+    expect(rowItemSchema.additionalProperties).toBe(false);
+
+    const rowProps = Object.keys(rowItemSchema.properties);
+    for (const key of rowProps) {
+      expect(rowItemSchema.required).toContain(key);
+      const fieldObj = rowItemSchema.properties[key as keyof typeof rowItemSchema.properties];
+      if (fieldObj.type === "object") {
+        expect(fieldObj.additionalProperties).toBe(false);
+        expect(fieldObj.required).toEqual(["value", "confidence"]);
+      }
+    }
   });
 });
