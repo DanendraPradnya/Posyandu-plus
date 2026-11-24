@@ -72,13 +72,13 @@ function UkurBalitaContent() {
         return;
       }
 
-      const { data: userRow } = await supabase
+      const { data: userRow, error: userErr } = await supabase
         .from("users")
         .select("peran, status_aktif")
         .eq("id", user.id)
         .maybeSingle();
 
-      if (userRow && !userRow.status_aktif) {
+      if (!userErr && userRow && userRow.status_aktif === false) {
         await supabase.auth.signOut();
         router.replace("/login?error=account_inactive");
         return;

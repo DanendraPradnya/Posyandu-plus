@@ -57,20 +57,30 @@ export default function DetailBalitaPage() {
 
       const {
         data: { user },
+        error: authErr,
       } = await supabase.auth.getUser();
 
       if (!user) {
-        router.replace("/login");
-        return;
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (!session?.user) {
+          router.replace("/login");
+          return;
+        }
+        throw new Error(
+          authErr?.message ??
+            "Gagal memverifikasi sesi karena kendala jaringan. Silakan coba lagi."
+        );
       }
 
-      const { data: currentUserRow } = await supabase
+      const { data: currentUserRow, error: roleErr } = await supabase
         .from("users")
         .select("peran, status_aktif")
         .eq("id", user.id)
         .maybeSingle();
 
-      if (currentUserRow && !currentUserRow.status_aktif) {
+      if (!roleErr && currentUserRow && currentUserRow.status_aktif === false) {
         await supabase.auth.signOut();
         router.replace("/login?error=account_inactive");
         return;
@@ -91,7 +101,7 @@ export default function DetailBalitaPage() {
       }
 
       if (!childData) {
-        setErrorMsg("Data balita tidak ditemukan atau berada di luar wilayah Posyandu Anda.");
+        setErrorMsg("Data balita tidak ditemukan atau berada di luar hak akses akun Anda.");
         setIsLoading(false);
         return;
       }

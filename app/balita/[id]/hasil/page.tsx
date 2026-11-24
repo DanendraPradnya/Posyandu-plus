@@ -40,20 +40,30 @@ export default function HalamanHasilAnakPage() {
       const supabase = createClient();
       const {
         data: { user },
+        error: authErr,
       } = await supabase.auth.getUser();
 
       if (!user) {
-        router.replace("/login");
-        return;
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (!session?.user) {
+          router.replace("/login");
+          return;
+        }
+        throw new Error(
+          authErr?.message ??
+            "Gagal memverifikasi sesi karena kendala jaringan. Silakan coba lagi."
+        );
       }
 
-      const { data: userRow } = await supabase
+      const { data: userRow, error: roleErr } = await supabase
         .from("users")
         .select("peran, status_aktif")
         .eq("id", user.id)
         .maybeSingle();
 
-      if (userRow && !userRow.status_aktif) {
+      if (!roleErr && userRow && userRow.status_aktif === false) {
         await supabase.auth.signOut();
         router.replace("/login?error=account_inactive");
         return;

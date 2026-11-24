@@ -52,7 +52,8 @@ export function evaluateRouteAccess(ctx: RouteAccessContext): RouteAccessDecisio
     pathname === "/bidan" || pathname.startsWith("/bidan/");
   const isProtectedRoute = isProtectedBalitaRoute || isProtectedBidanRoute;
 
-  // 1. Jika pengguna terautentikasi tetapi akunnya telah dinonaktifkan (F1-04)
+  // 1. Jika pengguna terautentikasi dan akunnya terkonfirmasi nonaktif (status_aktif === false)
+  // Catatan: isActive === null/undefined (misal saat galat jaringan sementara) TIDAK memicu signOut paksa.
   if (isAuthenticated && isActive === false) {
     return {
       allowed: false,
@@ -72,7 +73,7 @@ export function evaluateRouteAccess(ctx: RouteAccessContext): RouteAccessDecisio
     };
   }
 
-  // 3. Jika sudah login dan aktif tetapi mengakses halaman /login -> arahkan ke /balita
+  // 3. Jika sudah login (dan tidak berstatus nonaktif) tetapi mengakses halaman /login -> arahkan ke /balita
   if (isAuthenticated && isActive !== false && isLoginRoute) {
     return {
       allowed: false,
@@ -82,7 +83,12 @@ export function evaluateRouteAccess(ctx: RouteAccessContext): RouteAccessDecisio
   }
 
   // 4. Pembatasan ketat peran Orang Tua / Wali (read-only: tidak boleh input/ukur/bidan)
-  if (isAuthenticated && role === "orang_tua" && isParentBlockedRoute(pathname)) {
+  // Berlaku juga bila peran belum teridentifikasi pada rute mutasi staf (role == null) tanpa menghapus sesi.
+  if (
+    isAuthenticated &&
+    (role === "orang_tua" || (role == null && !isProtectedBidanRoute)) &&
+    isParentBlockedRoute(pathname)
+  ) {
     return {
       allowed: false,
       redirectTo: "/balita?denied=parent_readonly",

@@ -51,32 +51,48 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  const pathname = request.nextUrl.pathname;
+  const isProtectedRoute =
+    pathname === "/balita" ||
+    pathname.startsWith("/balita/") ||
+    pathname === "/bidan" ||
+    pathname.startsWith("/bidan/");
+  const isPrefetch =
+    request.headers.get("next-router-prefetch") !== null ||
+    request.headers.get("purpose") === "prefetch";
+
   let role: UserRole | null = null;
   let isActive: boolean | null = null;
 
   if (user) {
-    const { data: profile } = await supabase
+    const { data: profile, error: profileError } = await supabase
       .from("users")
       .select("peran, status_aktif")
       .eq("id", user.id)
       .maybeSingle();
 
-    if (profile) {
+    if (profileError) {
+      // Galat jaringan sementara atau prefetch yang dibatalkan: jangan paksa signOut
+      isActive = null;
+    } else if (profile) {
       role = profile.peran as UserRole;
       isActive = Boolean(profile.status_aktif);
     } else {
-      isActive = false;
+      // RLS users_read_own_profile menyembunyikan baris jika status_aktif = false.
+      // Hanya tandai nonaktif pada rute terproteksi dan bukan request prefetch,
+      // sehingga navigasi ke beranda (/) tidak pernah memutus sesi pengguna secara keliru.
+      isActive = isProtectedRoute && !isPrefetch ? false : null;
     }
   }
 
   const decision = evaluateRouteAccess({
-    pathname: request.nextUrl.pathname,
+    pathname,
     isAuthenticated: Boolean(user),
     role,
     isActive,
   });
 
-  if (decision.shouldSignOut) {
+  if (decision.shouldSignOut && !isPrefetch) {
     await supabase.auth.signOut();
   }
 
@@ -84,7 +100,7 @@ export async function middleware(request: NextRequest) {
     const redirectUrl = new URL(decision.redirectTo, request.url);
     const redirectResponse = NextResponse.redirect(redirectUrl);
     supabaseResponse.cookies.getAll().forEach((cookie) => {
-      redirectResponse.cookies.set(cookie.name, cookie.value);
+      redirectResponse.cookies.set(cookie);
     });
     return redirectResponse;
   }
