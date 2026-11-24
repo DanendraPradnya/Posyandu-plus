@@ -350,7 +350,10 @@ function UkurBalitaContent() {
               type="button"
               variant="primary"
               fullWidth
-              onClick={() => router.push(`/balita/${childId}`)}
+              onClick={() => {
+                router.push(`/balita/${childId}`);
+                router.refresh();
+              }}
             >
               Lihat Profil &amp; Riwayat
             </Button>

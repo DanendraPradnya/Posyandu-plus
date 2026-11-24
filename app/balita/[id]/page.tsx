@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
+import { getChildMeasurementStatus } from "@/lib/measurement-status";
 import type {
   Child,
   HealthProfile,
@@ -178,6 +179,7 @@ export default function DetailBalitaPage() {
     child !== null
       ? Math.max(0, calculateAgeInMonths(child.tgl_lahir, todayIso))
       : 0;
+  const measurementStatus = getChildMeasurementStatus(measurements.length);
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-5 pb-12">
@@ -205,9 +207,13 @@ export default function DetailBalitaPage() {
         <>
           <header className="bg-synora-mesh rounded-[24px] p-5 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-2.5">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <StatusBadge status={child.jenis_kelamin} />
+              <div className="flex flex-wrap items-center gap-2">
+                <StatusBadge status={child.jenis_kelamin} />
+                <StatusBadge status={measurementStatus} />
+              </div>
               <span className="text-xs font-semibold tabular-nums text-[#00857C]">
                 Usia: {ageMonths} bulan
+                {measurements.length > 0 ? ` • ${measurements.length} kunjungan` : ""}
               </span>
             </div>
             <div>
@@ -296,10 +302,19 @@ export default function DetailBalitaPage() {
               Riwayat Kunjungan Antropometri ({measurements.length})
             </h2>
             {measurements.length === 0 ? (
-              <EmptyState
-                title="Belum Ada Riwayat Penimbangan"
-                description="Balita ini telah terdaftar. Pencatatan kunjungan penimbangan dan grafik KMS akan tampil di bagian ini."
-              />
+              userRole === "orang_tua" ? (
+                <EmptyState
+                  title="Belum Diukur oleh Petugas Posyandu"
+                  description="Data penimbangan dan pengukuran Ananda belum diinput oleh Kader Posyandu atau Bidan Desa."
+                />
+              ) : (
+                <EmptyState
+                  title="Anak Belum Diukur"
+                  description="Belum ada data pengukuran pada profil balita ini. Lakukan Scan Foto Buku KIA atau Input Manual agar status berubah menjadi Sudah Diukur."
+                  actionLabel="Input Pengukuran Sekarang"
+                  onAction={() => router.push(`/balita/${child.id}/ukur?mode=manual`)}
+                />
+              )
             ) : (
               <ul className="space-y-2.5">
                 {measurements.map((m) => {
