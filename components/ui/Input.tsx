@@ -22,7 +22,7 @@ export function Input({
   const helperId = `${inputId}-helper`;
 
   return (
-    <div className="w-full space-y-1.5">
+    <div className="w-full min-w-0 space-y-1.5">
       <label
         htmlFor={inputId}
         className="block text-xs font-semibold text-[#0F292E]"
@@ -31,7 +31,7 @@ export function Input({
         {required && <span className="ml-1 text-red-600" aria-hidden="true">*</span>}
       </label>
 
-      <div className="relative flex items-center">
+      <div className="relative flex min-w-0 items-center">
         <input
           id={inputId}
           required={required}
@@ -40,7 +40,7 @@ export function Input({
             error ? errorId : helperText ? helperId : undefined
           }
           className={[
-            "w-full min-h-[48px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E] placeholder:text-[#7A969C]",
+            "w-full min-w-0 max-w-full min-h-[48px] rounded-xl border bg-white px-3.5 py-2.5 text-base sm:text-sm text-[#0F292E] placeholder:text-[#7A969C]",
             "transition-colors duration-150",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
             "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",
@@ -103,7 +103,7 @@ export function Select({
   const helperId = `${selectId}-helper`;
 
   return (
-    <div className="w-full space-y-1.5">
+    <div className="w-full min-w-0 space-y-1.5">
       <label
         htmlFor={selectId}
         className="block text-xs font-semibold text-[#0F292E]"
@@ -120,7 +120,7 @@ export function Select({
           error ? errorId : helperText ? helperId : undefined
         }
         className={[
-          "w-full min-h-[48px] rounded-xl border bg-white px-3.5 py-2.5 text-sm text-[#0F292E]",
+          "w-full min-w-0 max-w-full min-h-[48px] truncate text-ellipsis rounded-xl border bg-white pl-3.5 pr-8 py-2.5 text-base sm:text-sm text-[#0F292E]",
           "transition-colors duration-150",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] focus-visible:border-[#00B9AD]",
           "disabled:bg-[#EDF8FA] disabled:text-[#4A666C] disabled:cursor-not-allowed",

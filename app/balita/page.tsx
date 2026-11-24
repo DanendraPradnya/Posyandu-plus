@@ -297,19 +297,19 @@ function DaftarBalitaContent() {
       {/* Area Header Klinis (1 per layar) */}
       <header className="bg-synora-mesh relative overflow-hidden rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
         {/* Top Floating Pill Navbar */}
-        <div className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <div className="flex items-center gap-2.5">
+        <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)] min-w-0">
+          <div className="flex items-center gap-2 shrink-0">
             <BrandLogo href="/" size="md" />
             <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
               {roleLabel}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {profile?.peran === "bidan" && (
               <Link
                 href="/bidan/kader"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-3.5 sm:px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] whitespace-nowrap"
               >
                 Kelola Kader
               </Link>
@@ -318,7 +318,7 @@ function DaftarBalitaContent() {
               type="button"
               onClick={handleSignOut}
               disabled={isSigningOut}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-4 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-3.5 sm:px-4 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50 whitespace-nowrap"
             >
               {isSigningOut ? "Keluar..." : "Keluar"}
             </button>
@@ -358,7 +358,7 @@ function DaftarBalitaContent() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 grid grid-cols-3 gap-2.5">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
             <StatCard
               value={isLoading ? 0 : metrics.total}
               label="Total Balita"
@@ -369,11 +369,13 @@ function DaftarBalitaContent() {
               label="Ditimbang Bln Ini"
               tone="success"
             />
-            <StatCard
-              value={isLoading ? 0 : metrics.needsAttention}
-              label="Perlu Perhatian"
-              tone={metrics.needsAttention > 0 ? "warning" : "default"}
-            />
+            <div className="col-span-2 sm:col-span-1">
+              <StatCard
+                value={isLoading ? 0 : metrics.needsAttention}
+                label="Perlu Perhatian"
+                tone={metrics.needsAttention > 0 ? "warning" : "default"}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -399,40 +401,46 @@ function DaftarBalitaContent() {
         />
       )}
 
-      {/* Bar Pencarian dan Pengurutan */}
-      <Card variant="white" padding="sm" className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <div className="flex-1">
-          <label htmlFor="search-balita" className="sr-only">
-            Cari nama balita, orang tua, atau banjar
-          </label>
-          <input
-            id="search-balita"
-            type="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Cari nama balita, orang tua, atau banjar..."
-            className="w-full min-h-[48px] rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-base text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
-          />
-        </div>
+      {/* Bar Pencarian dan Pengurutan (hanya tampil jika relevan bagi data & peran) */}
+      {!isLoading && !errorMsg && childrenList.length > 0 && (!isParent || childrenList.length > 1) && (
+        <Card
+          variant="white"
+          padding="sm"
+          className="flex flex-col md:flex-row md:items-center justify-between gap-3 min-w-0 overflow-hidden"
+        >
+          <div className="flex-1 min-w-0">
+            <label htmlFor="search-balita" className="sr-only">
+              Cari nama balita, orang tua, atau banjar
+            </label>
+            <input
+              id="search-balita"
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari nama balita, orang tua, atau banjar..."
+              className="w-full min-w-0 max-w-full min-h-[48px] rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-base sm:text-sm text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            />
+          </div>
 
-        <div className="flex items-center gap-2.5 md:w-72">
-          <label
-            htmlFor="sort-balita"
-            className="text-xs font-semibold text-[#4A666C] shrink-0"
-          >
-            Urutkan:
-          </label>
-          <select
-            id="sort-balita"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="min-h-[48px] flex-1 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-base font-medium text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
-          >
-            <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
-            <option value="nama">Nama Balita (A - Z)</option>
-          </select>
-        </div>
-      </Card>
+          <div className="flex items-center gap-2.5 w-full md:w-72 md:shrink-0 min-w-0">
+            <label
+              htmlFor="sort-balita"
+              className="text-xs font-semibold text-[#4A666C] shrink-0"
+            >
+              Urutkan:
+            </label>
+            <select
+              id="sort-balita"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="min-h-[48px] w-full min-w-0 max-w-full flex-1 truncate text-ellipsis rounded-full border border-[#C5E4E8] bg-white pl-3.5 pr-8 text-base sm:text-sm font-medium text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            >
+              <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
+              <option value="nama">Nama Balita (A - Z)</option>
+            </select>
+          </div>
+        </Card>
+      )}
 
       {/* Daftar Anak dengan 3 State Eksplisit: Loading, Error, Empty */}
       <section aria-label="Daftar Anak" className="space-y-3.5">

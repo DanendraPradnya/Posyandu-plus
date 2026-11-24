@@ -282,12 +282,12 @@ export default function ManajemenKaderPage() {
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
       {/* Header Klinis (1 per layar) */}
       <header className="bg-synora-mesh rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
-        <div className="flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <BrandLogo href="/" size="md" />
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between gap-2 sm:gap-3 rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)] min-w-0">
+          <BrandLogo href="/" size="md" className="shrink-0" />
+          <div className="flex items-center gap-2 shrink-0">
             <Link
               href="/balita"
-              className="inline-flex min-h-[48px] items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+              className="inline-flex min-h-[48px] items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-3.5 sm:px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] whitespace-nowrap"
             >
               <span aria-hidden="true">&larr;</span>
               <span>Daftar Balita</span>
@@ -315,7 +315,7 @@ export default function ManajemenKaderPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 grid grid-cols-3 gap-2.5">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
             <StatCard
               value={isLoading ? 0 : metrics.total}
               label="Total Kader"
@@ -326,11 +326,13 @@ export default function ManajemenKaderPage() {
               label="Kader Aktif"
               tone="success"
             />
-            <StatCard
-              value={isLoading ? 0 : metrics.inactive}
-              label="Nonaktif"
-              tone={metrics.inactive > 0 ? "warning" : "default"}
-            />
+            <div className="col-span-2 sm:col-span-1">
+              <StatCard
+                value={isLoading ? 0 : metrics.inactive}
+                label="Nonaktif"
+                tone={metrics.inactive > 0 ? "warning" : "default"}
+              />
+            </div>
           </div>
         </div>
       </header>

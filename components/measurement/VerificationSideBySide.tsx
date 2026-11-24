@@ -180,7 +180,7 @@ export function VerificationSideBySide({
             <button
               type="button"
               onClick={() => setZoomed((z) => !z)}
-              className="text-xs font-semibold text-[#00857C] hover:underline min-h-[36px] px-2"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-lg px-3 text-xs font-semibold text-[#00857C] hover:underline"
             >
               {zoomed ? "Perkecil" : "Perbesar"}
             </button>
@@ -280,9 +280,9 @@ export function VerificationSideBySide({
                     </div>
                   )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs min-w-0">
                     {/* Tanggal Ukur */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E] flex justify-between">
                         <span>Tanggal Ukur *</span>
                         {isLowConf(row.confidences.tgl_ukur, Boolean(row.tgl_ukur)) && (
@@ -293,7 +293,7 @@ export function VerificationSideBySide({
                         type="date"
                         value={row.tgl_ukur}
                         onChange={(e) => updateRow(idx, { tgl_ukur: e.target.value })}
-                        className={`w-full min-h-[48px] rounded-xl border px-3 text-sm tabular-nums ${
+                        className={`w-full min-w-0 max-w-full min-h-[48px] rounded-xl border px-3 text-base sm:text-sm tabular-nums ${
                           isLowConf(row.confidences.tgl_ukur, Boolean(row.tgl_ukur))
                             ? "border-amber-400 bg-amber-50"
                             : "border-[#C5E4E8] bg-white"
@@ -302,7 +302,7 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* Berat Badan */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E] flex justify-between">
                         <span>Berat Badan (kg) *</span>
                         {isLowConf(row.confidences.bb_kg, Boolean(row.bb_kg)) && (
@@ -315,7 +315,7 @@ export function VerificationSideBySide({
                         inputMode="decimal"
                         value={row.bb_kg}
                         onChange={(e) => updateRow(idx, { bb_kg: e.target.value })}
-                        className={`w-full min-h-[48px] rounded-xl border px-3 text-sm tabular-nums ${
+                        className={`w-full min-w-0 max-w-full min-h-[48px] rounded-xl border px-3 text-base sm:text-sm tabular-nums ${
                           bbOut
                             ? "border-red-500 bg-red-50"
                             : isLowConf(row.confidences.bb_kg, Boolean(row.bb_kg))
@@ -326,7 +326,7 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* Panjang / Tinggi Badan */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E] flex justify-between">
                         <span>PB / TB (cm)</span>
                         {isLowConf(row.confidences.pb_tb_cm, Boolean(row.pb_tb_cm)) && (
@@ -339,7 +339,7 @@ export function VerificationSideBySide({
                         inputMode="decimal"
                         value={row.pb_tb_cm}
                         onChange={(e) => updateRow(idx, { pb_tb_cm: e.target.value })}
-                        className={`w-full min-h-[48px] rounded-xl border px-3 text-sm tabular-nums ${
+                        className={`w-full min-w-0 max-w-full min-h-[48px] rounded-xl border px-3 text-base sm:text-sm tabular-nums ${
                           pbOut
                             ? "border-red-500 bg-red-50"
                             : isLowConf(row.confidences.pb_tb_cm, Boolean(row.pb_tb_cm))
@@ -350,7 +350,7 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* Cara Ukur */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E]">Cara Ukur</span>
                       <select
                         value={row.cara_ukur}
@@ -359,7 +359,7 @@ export function VerificationSideBySide({
                             cara_ukur: e.target.value as MeasurementMethod | "",
                           })
                         }
-                        className="w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-3 text-sm"
+                        className="w-full min-w-0 max-w-full min-h-[48px] truncate text-ellipsis rounded-xl border border-[#C5E4E8] bg-white pl-3 pr-8 text-base sm:text-sm"
                       >
                         <option value="">Otomatis sesuai usia</option>
                         <option value="berbaring">Berbaring (PB)</option>
@@ -368,7 +368,7 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* Lingkar Kepala */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E]">Lingkar Kepala (cm)</span>
                       <input
                         type="number"
@@ -376,7 +376,7 @@ export function VerificationSideBySide({
                         inputMode="decimal"
                         value={row.lk_cm}
                         onChange={(e) => updateRow(idx, { lk_cm: e.target.value })}
-                        className={`w-full min-h-[48px] rounded-xl border px-3 text-sm tabular-nums ${
+                        className={`w-full min-w-0 max-w-full min-h-[48px] rounded-xl border px-3 text-base sm:text-sm tabular-nums ${
                           lkOut
                             ? "border-red-500 bg-red-50"
                             : isLowConf(row.confidences.lk_cm, Boolean(row.lk_cm))
@@ -387,7 +387,7 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* LiLA */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E]">LiLA (cm)</span>
                       <input
                         type="number"
@@ -395,7 +395,7 @@ export function VerificationSideBySide({
                         inputMode="decimal"
                         value={row.lila_cm}
                         onChange={(e) => updateRow(idx, { lila_cm: e.target.value })}
-                        className={`w-full min-h-[48px] rounded-xl border px-3 text-sm tabular-nums ${
+                        className={`w-full min-w-0 max-w-full min-h-[48px] rounded-xl border px-3 text-base sm:text-sm tabular-nums ${
                           lilaOut
                             ? "border-red-500 bg-red-50"
                             : isLowConf(row.confidences.lila_cm, Boolean(row.lila_cm))
@@ -406,19 +406,19 @@ export function VerificationSideBySide({
                     </label>
 
                     {/* Imunisasi */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E]">Imunisasi</span>
                       <input
                         type="text"
                         value={row.imunisasi}
                         onChange={(e) => updateRow(idx, { imunisasi: e.target.value })}
                         placeholder="Contoh: DPT-HB-Hib 2"
-                        className="w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-3 text-sm"
+                        className="w-full min-w-0 max-w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-3 text-base sm:text-sm"
                       />
                     </label>
 
                     {/* ASI Eksklusif */}
-                    <label className="space-y-1">
+                    <label className="space-y-1 min-w-0">
                       <span className="font-semibold text-[#0F292E]">ASI Eksklusif</span>
                       <select
                         value={row.asi_eksklusif}
@@ -427,7 +427,7 @@ export function VerificationSideBySide({
                             asi_eksklusif: e.target.value as "" | "ya" | "tidak",
                           })
                         }
-                        className="w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-3 text-sm"
+                        className="w-full min-w-0 max-w-full min-h-[48px] truncate text-ellipsis rounded-xl border border-[#C5E4E8] bg-white pl-3 pr-8 text-base sm:text-sm"
                       >
                         <option value="">Tidak tercatat</option>
                         <option value="ya">Ya</option>
