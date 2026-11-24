@@ -47,6 +47,7 @@ async function seed() {
   console.log("🌱 Memulai pengisian data awal (seeding) Supabase Posyandu+...");
 
   const baseDir = process.cwd();
+  let hasErrors = false;
 
   // --------------------------------------------------------------------------
   // 1. Seed ref_lms
@@ -213,7 +214,7 @@ async function seed() {
   // --------------------------------------------------------------------------
   // 5. Seed Akun Pengguna Uji (Supabase Auth & public.users)
   // --------------------------------------------------------------------------
-  console.log("5. Membuat akun pengguna uji (1 Bidan, 2 Kader)...");
+  console.log("5. Membuat akun pengguna uji (1 Bidan, 2 Kader, 1 Orang Tua)...");
   const defaultPassword = "PosyanduPlus2026!";
 
   const usersToSeed = [
@@ -235,7 +236,15 @@ async function seed() {
       peran: "kader" as const,
       posyandu_ditugaskan: posyanduKloncing?.id || null,
     },
+    {
+      email: "ortu.rama@posyanduplus.local",
+      nama: "I Made Sanjaya (Orang Tua)",
+      peran: "orang_tua" as const,
+      posyandu_ditugaskan: null,
+    },
   ];
+
+  const seededUserIdByEmail = new Map<string, string>();
 
   for (const u of usersToSeed) {
     // Periksa apakah user sudah ada di Auth
@@ -250,6 +259,7 @@ async function seed() {
         user_metadata: { nama: u.nama, peran: u.peran },
       });
       if (authError) {
+        hasErrors = true;
         console.error(`   ⚠️ Gagal buat auth user ${u.email}:`, authError.message);
         continue;
       }
@@ -267,8 +277,15 @@ async function seed() {
       });
 
       if (profileError) {
+        hasErrors = true;
         console.error(`   ⚠️ Gagal upsert profil user ${u.email}:`, profileError.message);
+        if (profileError.message.includes("users_peran_check")) {
+          console.error(
+            "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+          );
+        }
       } else {
+        seededUserIdByEmail.set(u.email, authUser.id);
         console.log(`   ✅ User siap: ${u.nama} (${u.email}) [Peran: ${u.peran}]`);
       }
     }
@@ -278,12 +295,15 @@ async function seed() {
   // 6. Seed Balita Sintetis (Children)
   // --------------------------------------------------------------------------
   console.log("6. Membuat data balita sintetis...");
+  const parentRamaUserId = seededUserIdByEmail.get("ortu.rama@posyanduplus.local") ?? null;
+
   if (posyanduDalem && posyanduKloncing) {
     const childrenToSeed: Array<{
       nama: string;
       tgl_lahir: string;
       jenis_kelamin: "M" | "F";
       nama_ortu: string;
+      parent_user_id: string | null;
       posyandu_id: string;
       banjar: string;
       consent_at: string;
@@ -293,6 +313,7 @@ async function seed() {
         tgl_lahir: "2025-10-15",
         jenis_kelamin: "M",
         nama_ortu: "I Made Sanjaya",
+        parent_user_id: parentRamaUserId,
         posyandu_id: posyanduDalem.id,
         banjar: "Banjar Dinas Dalem",
         consent_at: new Date().toISOString(),
@@ -302,6 +323,7 @@ async function seed() {
         tgl_lahir: "2025-03-20",
         jenis_kelamin: "F",
         nama_ortu: "Ni Ketut Suartini",
+        parent_user_id: null,
         posyandu_id: posyanduDalem.id,
         banjar: "Banjar Dinas Dalem",
         consent_at: new Date().toISOString(),
@@ -311,6 +333,7 @@ async function seed() {
         tgl_lahir: "2026-02-10",
         jenis_kelamin: "M",
         nama_ortu: "I Wayan Putra",
+        parent_user_id: null,
         posyandu_id: posyanduKloncing.id,
         banjar: "Banjar Dinas Kloncing",
         consent_at: new Date().toISOString(),
@@ -320,6 +343,7 @@ async function seed() {
         tgl_lahir: "2025-08-05",
         jenis_kelamin: "F",
         nama_ortu: "I Gede Dewi",
+        parent_user_id: null,
         posyandu_id: posyanduKloncing.id,
         banjar: "Banjar Dinas Kloncing",
         consent_at: new Date().toISOString(),
@@ -335,17 +359,48 @@ async function seed() {
         .maybeSingle();
 
       if (!existing) {
-        await supabase.from("children").insert(child);
+        const { error: insertChildError } = await supabase.from("children").insert(child);
+        if (insertChildError) {
+          hasErrors = true;
+          console.error(`   ⚠️ Gagal tambah balita ${child.nama}:`, insertChildError.message);
+          if (insertChildError.message.includes("parent_user_id")) {
+            console.error(
+              "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+            );
+          }
+        }
+      } else if (child.parent_user_id) {
+        const { error: updateChildError } = await supabase
+          .from("children")
+          .update({ parent_user_id: child.parent_user_id })
+          .eq("id", existing.id);
+        if (updateChildError) {
+          hasErrors = true;
+          console.error(`   ⚠️ Gagal menautkan orang tua untuk ${child.nama}:`, updateChildError.message);
+          if (updateChildError.message.includes("parent_user_id")) {
+            console.error(
+              "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+            );
+          }
+        }
       }
     }
-    console.log(`   ✅ Selesai membuat ${childrenToSeed.length} balita sintetis.`);
+    if (!hasErrors) {
+      console.log(`   ✅ Selesai membuat ${childrenToSeed.length} balita sintetis.`);
+    }
+  }
+
+  if (hasErrors) {
+    console.error("\n❌ Seeding selesai dengan galat. Perbaiki galat di atas lalu jalankan ulang npm run db:seed.");
+    process.exit(1);
   }
 
   console.log("\n🎉 Seeding selesai dengan sukses!");
   console.log(`Kredensial login akun uji (Password: ${defaultPassword}):`);
-  console.log("- Bidan : bidan.kerobokan@posyanduplus.local (Seluruh Posyandu)");
-  console.log("- Kader A: kader.dalem@posyanduplus.local (Posyandu Dalem)");
-  console.log("- Kader B: kader.kloncing@posyanduplus.local (Posyandu Kloncing)");
+  console.log("- Bidan    : bidan.kerobokan@posyanduplus.local (Seluruh Posyandu)");
+  console.log("- Kader A  : kader.dalem@posyanduplus.local (Posyandu Dalem)");
+  console.log("- Kader B  : kader.kloncing@posyanduplus.local (Posyandu Kloncing)");
+  console.log("- Orang Tua: ortu.rama@posyanduplus.local (Read-Only: I Gede Rama Sanjaya)");
 }
 
 seed().catch((err) => {

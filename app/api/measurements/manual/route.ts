@@ -35,6 +35,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Akun Orang Tua/Wali tidak dapat menginput data pengukuran." },
+        { status: 403 }
+      );
+    }
+
     const rawBody = await req.json();
     const parsed = manualMeasurementSchema.safeParse(rawBody);
 

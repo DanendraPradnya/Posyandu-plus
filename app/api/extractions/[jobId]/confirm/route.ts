@@ -42,6 +42,13 @@ export async function POST(
       );
     }
 
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Akun Orang Tua/Wali hanya memiliki akses baca." },
+        { status: 403 }
+      );
+    }
+
     const { jobId } = await context.params;
     const rawBody = await req.json();
     const parsed = confirmBodySchema.safeParse(rawBody);

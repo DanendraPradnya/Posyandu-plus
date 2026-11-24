@@ -10,6 +10,7 @@ import type {
   HealthProfile,
   Measurement,
   Posyandu,
+  UserRole,
   ZScoreResult,
 } from "@/lib/types";
 import {
@@ -37,6 +38,7 @@ export default function DetailBalitaPage() {
   const childId = params.id;
 
   const [child, setChild] = useState<Child | null>(null);
+  const [userRole, setUserRole] = useState<UserRole | null>(null);
   const [posyandu, setPosyandu] = useState<Posyandu | null>(null);
   const [measurements, setMeasurements] = useState<Measurement[]>([]);
   const [healthProfile, setHealthProfile] = useState<HealthProfile | null>(null);
@@ -60,6 +62,22 @@ export default function DetailBalitaPage() {
       if (!user) {
         router.replace("/login");
         return;
+      }
+
+      const { data: currentUserRow } = await supabase
+        .from("users")
+        .select("peran, status_aktif")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (currentUserRow && !currentUserRow.status_aktif) {
+        await supabase.auth.signOut();
+        router.replace("/login?error=account_inactive");
+        return;
+      }
+
+      if (currentUserRow?.peran) {
+        setUserRole(currentUserRow.peran as UserRole);
       }
 
       const { data: childData, error: childErr } = await supabase
@@ -228,26 +246,40 @@ export default function DetailBalitaPage() {
           />
 
           <section className="space-y-3">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <Link
-                href={`/balita/${child.id}/ukur?mode=foto`}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#00B9AD] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#009E94] active:bg-[#00857C]"
-              >
-                Scan Foto Buku KIA
-              </Link>
-              <Link
-                href={`/balita/${child.id}/ukur?mode=manual`}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#C5E4E8] bg-white px-5 py-2.5 text-sm font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
-              >
-                Input Manual
-              </Link>
-              <Link
-                href={`/balita/${child.id}/hasil`}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#00B9AD] bg-[#EDF8FA] px-5 py-2.5 text-sm font-semibold text-[#00857C] hover:bg-[#DCEEEF]"
-              >
-                Halaman Hasil &amp; Bagikan
-              </Link>
-            </div>
+            {userRole === "orang_tua" ? (
+              <div className="space-y-2.5">
+                <Link
+                  href={`/balita/${child.id}/hasil`}
+                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-[#00B9AD] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#009E94] active:bg-[#00857C]"
+                >
+                  Lihat Hasil &amp; Rekomendasi AI
+                </Link>
+                <p className="text-xs text-[#4A666C]">
+                  Akses Orang Tua/Wali bersifat hanya-baca. Pencatatan penimbangan baru dilakukan oleh Kader Posyandu atau Bidan Desa.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <Link
+                  href={`/balita/${child.id}/ukur?mode=foto`}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#00B9AD] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#009E94] active:bg-[#00857C]"
+                >
+                  Scan Foto Buku KIA
+                </Link>
+                <Link
+                  href={`/balita/${child.id}/ukur?mode=manual`}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#C5E4E8] bg-white px-5 py-2.5 text-sm font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+                >
+                  Input Manual
+                </Link>
+                <Link
+                  href={`/balita/${child.id}/hasil`}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-[#00B9AD] bg-[#EDF8FA] px-5 py-2.5 text-sm font-semibold text-[#00857C] hover:bg-[#DCEEEF]"
+                >
+                  Halaman Hasil &amp; Bagikan
+                </Link>
+              </div>
+            )}
 
             <h2 className="text-sm font-bold text-[#0F292E]">
               Riwayat Kunjungan Antropometri ({measurements.length})

@@ -16,6 +16,13 @@ export async function DELETE(
       return NextResponse.json({ error: "Sesi tidak valid." }, { status: 401 });
     }
 
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Pengelolaan tautan bagikan hanya untuk Kader atau Bidan." },
+        { status: 403 }
+      );
+    }
+
     const { id } = await context.params;
     const supabase = await createClient();
 

@@ -18,6 +18,13 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Sesi tidak valid." }, { status: 401 });
     }
 
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Pengelolaan tautan bagikan hanya untuk Kader atau Bidan." },
+        { status: 403 }
+      );
+    }
+
     const childId = req.nextUrl.searchParams.get("child_id");
     if (!childId) {
       return NextResponse.json(
@@ -54,6 +61,13 @@ export async function POST(req: NextRequest) {
     const session = await getCurrentUser();
     if (!session || !session.profile.status_aktif) {
       return NextResponse.json({ error: "Sesi tidak valid." }, { status: 401 });
+    }
+
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Pengelolaan tautan bagikan hanya untuk Kader atau Bidan." },
+        { status: 403 }
+      );
     }
 
     const body = (await req.json()) as { child_id?: string; expiry_days?: number };
