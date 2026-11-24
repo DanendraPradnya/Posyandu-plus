@@ -47,6 +47,7 @@ async function seed() {
   console.log("🌱 Memulai pengisian data awal (seeding) Supabase Posyandu+...");
 
   const baseDir = process.cwd();
+  let hasErrors = false;
 
   // --------------------------------------------------------------------------
   // 1. Seed ref_lms
@@ -258,6 +259,7 @@ async function seed() {
         user_metadata: { nama: u.nama, peran: u.peran },
       });
       if (authError) {
+        hasErrors = true;
         console.error(`   ⚠️ Gagal buat auth user ${u.email}:`, authError.message);
         continue;
       }
@@ -265,7 +267,6 @@ async function seed() {
     }
 
     if (authUser) {
-      seededUserIdByEmail.set(u.email, authUser.id);
       const { error: profileError } = await supabase.from("users").upsert({
         id: authUser.id,
         peran: u.peran,
@@ -276,8 +277,15 @@ async function seed() {
       });
 
       if (profileError) {
+        hasErrors = true;
         console.error(`   ⚠️ Gagal upsert profil user ${u.email}:`, profileError.message);
+        if (profileError.message.includes("users_peran_check")) {
+          console.error(
+            "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+          );
+        }
       } else {
+        seededUserIdByEmail.set(u.email, authUser.id);
         console.log(`   ✅ User siap: ${u.nama} (${u.email}) [Peran: ${u.peran}]`);
       }
     }
@@ -351,15 +359,40 @@ async function seed() {
         .maybeSingle();
 
       if (!existing) {
-        await supabase.from("children").insert(child);
+        const { error: insertChildError } = await supabase.from("children").insert(child);
+        if (insertChildError) {
+          hasErrors = true;
+          console.error(`   ⚠️ Gagal tambah balita ${child.nama}:`, insertChildError.message);
+          if (insertChildError.message.includes("parent_user_id")) {
+            console.error(
+              "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+            );
+          }
+        }
       } else if (child.parent_user_id) {
-        await supabase
+        const { error: updateChildError } = await supabase
           .from("children")
           .update({ parent_user_id: child.parent_user_id })
           .eq("id", existing.id);
+        if (updateChildError) {
+          hasErrors = true;
+          console.error(`   ⚠️ Gagal menautkan orang tua untuk ${child.nama}:`, updateChildError.message);
+          if (updateChildError.message.includes("parent_user_id")) {
+            console.error(
+              "   💡 Petunjuk: Jalankan migrasi supabase/migrations/005_parent_role_and_rls.sql di Supabase SQL Editor terlebih dahulu."
+            );
+          }
+        }
       }
     }
-    console.log(`   ✅ Selesai membuat ${childrenToSeed.length} balita sintetis.`);
+    if (!hasErrors) {
+      console.log(`   ✅ Selesai membuat ${childrenToSeed.length} balita sintetis.`);
+    }
+  }
+
+  if (hasErrors) {
+    console.error("\n❌ Seeding selesai dengan galat. Perbaiki galat di atas lalu jalankan ulang npm run db:seed.");
+    process.exit(1);
   }
 
   console.log("\n🎉 Seeding selesai dengan sukses!");
