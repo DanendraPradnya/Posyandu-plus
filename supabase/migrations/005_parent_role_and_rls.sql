@@ -20,7 +20,7 @@ ALTER TABLE public.users
 -- ------------------------------------------------------------------------------
 
 ALTER TABLE public.children
-    ADD COLUMN IF NOT EXISTS parent_user_id UUID REFERENCES public.users(id) ON DELETE SET NULL;
+    ADD COLUMN parent_user_id UUID REFERENCES public.users(id) ON DELETE SET NULL;
 
 CREATE INDEX IF NOT EXISTS idx_children_parent_user
     ON public.children(parent_user_id);
