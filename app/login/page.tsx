@@ -108,16 +108,16 @@ function LoginFormContent() {
           {/* Left Info Column: Clean Typographic Eyebrow (no pill + no decorative dot per R-09/R-31) */}
           <div className="lg:col-span-6 space-y-3.5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#00857C]">
-              Portal Autentikasi Petugas • Desa Kerobokan
+              Portal Autentikasi Posyandu+ • Desa Kerobokan
             </p>
 
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E] leading-snug">
               Akses Klinis Terpadu untuk{" "}
-              <span className="text-[#00857C]">Kader &amp; Bidan Desa</span>
+              <span className="text-[#00857C]">Kader, Bidan, &amp; Orang Tua</span>
             </h1>
 
             <p className="text-xs sm:text-sm leading-relaxed text-[#4A666C]">
-              Masuk untuk mencatat hasil penimbangan bulanan, memantau kurva Z-Score WHO 2006, dan menindaklanjuti indikasi dini risiko stunting di wilayah Desa Kerobokan.
+              Masuk untuk mencatat hasil penimbangan bulanan bagi petugas, atau memantau kurva KMS dan rekomendasi edukasi AI bagi Orang Tua/Wali terdaftar.
             </p>
 
             <div className="grid grid-cols-3 gap-3 pt-2">
@@ -141,10 +141,10 @@ function LoginFormContent() {
             <div className="mx-auto max-w-md rounded-2xl border border-[#D5ECEF] bg-white p-5 sm:p-6 shadow-sm space-y-4">
               <div className="space-y-1">
                 <h2 className="text-lg font-bold tracking-tight text-[#0F292E]">
-                  Masuk Akun Petugas
+                  Masuk Akun Posyandu+
                 </h2>
                 <p className="text-xs text-[#4A666C]">
-                  Gunakan email resmi Kader Posyandu atau Bidan Desa.
+                  Gunakan email resmi Kader, Bidan Desa, atau Orang Tua/Wali terdaftar.
                 </p>
               </div>
 

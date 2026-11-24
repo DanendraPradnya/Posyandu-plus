@@ -263,6 +263,9 @@ function DaftarBalitaContent() {
 
   const assignedPosyanduName = useMemo(() => {
     if (!profile) return "Memuat Posyandu...";
+    if (profile.peran === "orang_tua") {
+      return "Portal Perkembangan Anak (Akses Baca)";
+    }
     if (profile.peran === "bidan") {
       return "Seluruh Posyandu Wilayah Kerobokan";
     }
@@ -271,6 +274,14 @@ function DaftarBalitaContent() {
     }
     return "Posyandu Wilayah";
   }, [profile, posyanduMap]);
+
+  const isParent = profile?.peran === "orang_tua";
+  const roleLabel =
+    profile?.peran === "bidan"
+      ? "Bidan Desa"
+      : profile?.peran === "orang_tua"
+        ? "Orang Tua / Wali"
+        : "Kader Posyandu";
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-6 pb-14">
@@ -281,7 +292,7 @@ function DaftarBalitaContent() {
           <div className="flex items-center gap-2.5">
             <BrandLogo href="/" size="md" />
             <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
-              {profile?.peran === "bidan" ? "Bidan Desa" : "Kader Posyandu"}
+              {roleLabel}
             </span>
           </div>
 
@@ -309,19 +320,26 @@ function DaftarBalitaContent() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
           <div className="lg:col-span-7 space-y-2.5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[#00857C]">
-              {assignedPosyanduName} • {profile ? `Petugas: ${profile.nama}` : "Memuat sesi..."}
+              {assignedPosyanduName} •{" "}
+              {profile
+                ? `${isParent ? "Akun" : "Petugas"}: ${profile.nama}`
+                : "Memuat sesi..."}
             </p>
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F292E]">
-              Daftar Balita &amp; Pemantauan Gizi
+              {isParent
+                ? "Perkembangan Balita Saya"
+                : "Daftar Balita & Pemantauan Gizi"}
             </h1>
             <div className="pt-1 flex flex-wrap items-center gap-2.5">
-              <Link
-                href="/balita/baru"
-                className="inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
-              >
-                <span aria-hidden="true" className="text-sm leading-none">+</span>
-                <span>Daftarkan Balita Baru</span>
-              </Link>
+              {!isParent && (
+                <Link
+                  href="/balita/baru"
+                  className="inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+                >
+                  <span aria-hidden="true" className="text-sm leading-none">+</span>
+                  <span>Daftarkan Balita Baru</span>
+                </Link>
+              )}
               <Link
                 href="/"
                 className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
@@ -362,6 +380,13 @@ function DaftarBalitaContent() {
         <Toast
           tone="warning"
           message="Halaman manajemen akun Kader hanya dapat diakses oleh Bidan Desa."
+        />
+      )}
+
+      {deniedParam === "parent_readonly" && (
+        <Toast
+          tone="warning"
+          message="Akun Orang Tua/Wali hanya memiliki akses baca. Input atau perubahan data balita dilakukan oleh Kader Posyandu atau Bidan Desa."
         />
       )}
 
@@ -411,12 +436,19 @@ function DaftarBalitaContent() {
             onRetry={loadDashboardData}
           />
         ) : childrenList.length === 0 ? (
-          <EmptyState
-            title="Belum Ada Balita Terdaftar"
-            description="Mulai pencatatan Posyandu dengan mendaftarkan profil balita pertama beserta persetujuan orang tua/wali."
-            actionLabel="Daftarkan Balita Pertama"
-            onAction={() => router.push("/balita/baru")}
-          />
+          isParent ? (
+            <EmptyState
+              title="Belum Ada Data Balita Tertaut"
+              description="Akun Orang Tua/Wali Anda belum ditautkan ke profil balita mana pun. Hubungi Kader Posyandu atau Bidan Desa untuk menautkan akun Anda."
+            />
+          ) : (
+            <EmptyState
+              title="Belum Ada Balita Terdaftar"
+              description="Mulai pencatatan Posyandu dengan mendaftarkan profil balita pertama beserta persetujuan orang tua/wali."
+              actionLabel="Daftarkan Balita Pertama"
+              onAction={() => router.push("/balita/baru")}
+            />
+          )
         ) : filteredChildren.length === 0 ? (
           <EmptyState
             title="Tidak Ditemukan Hasil Pencarian"

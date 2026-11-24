@@ -4,7 +4,7 @@
  * Versi Kontrak: 1.0.0
  */
 
-export type UserRole = "kader" | "bidan";
+export type UserRole = "kader" | "bidan" | "orang_tua";
 export type Sex = "M" | "F";
 export type MeasurementMethod = "berbaring" | "berdiri";
 export type DataSource = "AI" | "manual";
@@ -69,6 +69,7 @@ export interface Child {
   nik_no_kia?: string | null;
   nama_ortu: string;
   kontak_ortu?: string | null;
+  parent_user_id?: string | null;
   posyandu_id: string;
   banjar: string;
   consent_at: string; // ISO timestamp

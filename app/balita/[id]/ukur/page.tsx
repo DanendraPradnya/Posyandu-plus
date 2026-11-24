@@ -72,6 +72,23 @@ function UkurBalitaContent() {
         return;
       }
 
+      const { data: userRow } = await supabase
+        .from("users")
+        .select("peran, status_aktif")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (userRow && !userRow.status_aktif) {
+        await supabase.auth.signOut();
+        router.replace("/login?error=account_inactive");
+        return;
+      }
+
+      if (userRow?.peran === "orang_tua") {
+        router.replace("/balita?denied=parent_readonly");
+        return;
+      }
+
       const { data, error } = await supabase
         .from("children")
         .select("*")

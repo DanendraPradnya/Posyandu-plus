@@ -36,6 +36,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    if (session.profile.peran === "orang_tua") {
+      return NextResponse.json(
+        { error: "Akses ditolak: Akun Orang Tua/Wali hanya memiliki akses baca." },
+        { status: 403 }
+      );
+    }
+
     const formData = await req.formData();
     const childId = formData.get("child_id");
     const idempotencyKey = formData.get("idempotency_key");

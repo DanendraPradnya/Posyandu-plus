@@ -36,6 +36,9 @@ export default function RegistrasiBalitaBaruPage() {
 
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [posyanduList, setPosyanduList] = useState<Posyandu[]>([]);
+  const [parentAccounts, setParentAccounts] = useState<
+    Array<{ id: string; nama: string; email: string }>
+  >([]);
   const [existingChildren, setExistingChildren] = useState<
     ExistingChildSummary[]
   >([]);
@@ -50,6 +53,7 @@ export default function RegistrasiBalitaBaruPage() {
   const [nikNoKia, setNikNoKia] = useState("");
   const [namaOrtu, setNamaOrtu] = useState("");
   const [kontakOrtu, setKontakOrtu] = useState("");
+  const [parentUserId, setParentUserId] = useState("");
   const [posyanduId, setPosyanduId] = useState("");
   const [banjar, setBanjar] = useState("");
   const [consentGiven, setConsentGiven] = useState(false);
@@ -91,6 +95,10 @@ export default function RegistrasiBalitaBaruPage() {
       }
 
       const typedProfile = userProfile as UserProfile;
+      if (typedProfile.peran === "orang_tua") {
+        router.replace("/balita?denied=parent_readonly");
+        return;
+      }
       setProfile(typedProfile);
 
       const { data: posRows, error: posErr } = await supabase
@@ -118,6 +126,18 @@ export default function RegistrasiBalitaBaruPage() {
         setPosyanduId(posList[0].id);
         setBanjar(posList[0].dusun_banjar);
       }
+
+      // Ambil daftar akun Orang Tua aktif untuk penautan opsional
+      const { data: parentRows } = await supabase
+        .from("users")
+        .select("id, nama, email")
+        .eq("peran", "orang_tua")
+        .eq("status_aktif", true)
+        .order("nama", { ascending: true });
+
+      setParentAccounts(
+        (parentRows ?? []) as Array<{ id: string; nama: string; email: string }>
+      );
 
       // Ambil daftar ringkas balita untuk pemeriksaan duplikat nama + tgl_lahir
       const { data: childRows } = await supabase
@@ -219,6 +239,7 @@ export default function RegistrasiBalitaBaruPage() {
         nik_no_kia: nikNoKia.trim() ? nikNoKia.trim() : null,
         nama_ortu: namaOrtu.trim(),
         kontak_ortu: kontakOrtu.trim() ? kontakOrtu.trim() : null,
+        parent_user_id: parentUserId || null,
         posyandu_id: posyanduId,
         banjar: banjar.trim(),
         consent_at: consentTimestamp,
@@ -440,6 +461,23 @@ export default function RegistrasiBalitaBaruPage() {
               value={kontakOrtu}
               onChange={(e) => setKontakOrtu(e.target.value)}
             />
+
+            {parentAccounts.length > 0 && (
+              <Select
+                id="reg-parent-account"
+                label="Tautkan Akun Orang Tua / Wali (Opsional)"
+                value={parentUserId}
+                onChange={(e) => setParentUserId(e.target.value)}
+                options={[
+                  { value: "", label: "Belum ditautkan ke akun Orang Tua" },
+                  ...parentAccounts.map((p) => ({
+                    value: p.id,
+                    label: `${p.nama} (${p.email})`,
+                  })),
+                ]}
+                helperText="Orang tua yang ditautkan dapat login dengan akses baca untuk melihat perkembangan anaknya."
+              />
+            )}
 
             <Select
               id="reg-posyandu"
