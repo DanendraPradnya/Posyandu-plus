@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
@@ -22,6 +22,47 @@ function LoginFormContent() {
       ? "Akun Anda telah dinonaktifkan oleh Bidan Desa. Silakan hubungi Bidan Pembina Wilayah."
       : null
   );
+
+  // Jika pengguna masih memiliki sesi aktif (misal kembali via cache browser), langsung arahkan ke /balita
+  useEffect(() => {
+    let cancelled = false;
+
+    async function redirectIfAlreadyAuthenticated() {
+      try {
+        const supabase = createClient();
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (!session?.user || cancelled) {
+          return;
+        }
+
+        const { data: profile, error: profileErr } = await supabase
+          .from("users")
+          .select("id, status_aktif")
+          .eq("id", session.user.id)
+          .maybeSingle();
+
+        if (cancelled || profileErr) {
+          return;
+        }
+
+        if (profile && profile.status_aktif) {
+          const targetRoute =
+            nextPath && nextPath.startsWith("/") ? nextPath : "/balita";
+          router.replace(targetRoute);
+        }
+      } catch {
+        // Biarkan form login tetap tampil bila pemeriksaan latar belakang gagal
+      }
+    }
+
+    void redirectIfAlreadyAuthenticated();
+    return () => {
+      cancelled = true;
+    };
+  }, [nextPath, router]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -56,10 +97,18 @@ function LoginFormContent() {
         .eq("id", authData.user.id)
         .maybeSingle();
 
-      if (profileError || !profile) {
+      if (profileError) {
+        setErrorMessage(
+          "Terjadi gangguan jaringan saat memuat profil akun. Silakan coba lagi."
+        );
+        setIsLoading(false);
+        return;
+      }
+
+      if (!profile) {
         await supabase.auth.signOut();
         setErrorMessage(
-          "Profil petugas tidak ditemukan pada sistem Posyandu+. Hubungi Bidan Desa."
+          "Profil akun tidak ditemukan pada sistem Posyandu+. Hubungi Bidan Desa."
         );
         setIsLoading(false);
         return;
@@ -76,7 +125,7 @@ function LoginFormContent() {
 
       const targetRoute =
         nextPath && nextPath.startsWith("/") ? nextPath : "/balita";
-      router.push(targetRoute);
+      router.replace(targetRoute);
       router.refresh();
     } catch (err: unknown) {
       setErrorMessage(
@@ -167,7 +216,7 @@ function LoginFormContent() {
               <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
                 <Input
                   id="login-email"
-                  label="Alamat Email Petugas"
+                  label="Alamat Email"
                   type="email"
                   autoComplete="email"
                   placeholder="nama@posyandu.id"

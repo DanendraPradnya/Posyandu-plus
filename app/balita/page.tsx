@@ -73,9 +73,18 @@ function DaftarBalitaContent() {
         error: authErr,
       } = await supabase.auth.getUser();
 
-      if (authErr || !user) {
-        router.replace("/login");
-        return;
+      if (!user) {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        if (!session?.user) {
+          router.replace("/login");
+          return;
+        }
+        throw new Error(
+          authErr?.message ??
+            "Gagal memverifikasi sesi karena kendala jaringan. Silakan coba lagi."
+        );
       }
 
       const { data: userProfile, error: profileErr } = await supabase
@@ -85,12 +94,12 @@ function DaftarBalitaContent() {
         .maybeSingle();
 
       if (profileErr || !userProfile) {
-        setErrorMsg("Gagal memuat profil petugas Posyandu+.");
+        setErrorMsg("Gagal memuat profil pengguna Posyandu+.");
         setIsLoading(false);
         return;
       }
 
-      if (!userProfile.status_aktif) {
+      if (userProfile.status_aktif === false) {
         await supabase.auth.signOut();
         router.replace("/login?error=account_inactive");
         return;

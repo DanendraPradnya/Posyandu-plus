@@ -1,6 +1,16 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
+import type { UserProfile, UserRole } from "@/lib/types";
 import { BrandLogo } from "@/components/ui";
+
+type HomeSessionProfile = Pick<
+  UserProfile,
+  "id" | "nama" | "peran" | "status_aktif"
+>;
 
 const HERO_METRICS = [
   {
@@ -18,37 +28,6 @@ const HERO_METRICS = [
   {
     value: "R1-R8",
     label: "Aturan Skrining Klinis",
-  },
-];
-
-const SUPPORTING_MODULES = [
-  {
-    step: "02",
-    tag: "Daftar Wilayah",
-    title: "Pemantauan Balita Aktif",
-    description:
-      "Daftar seluruh balita per wilayah Posyandu lengkap dengan status gizi dan riwayat timbang terakhir.",
-    href: "/balita",
-    action: "Buka Daftar Balita",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.85}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-      </svg>
-    ),
-  },
-  {
-    step: "03",
-    tag: "Tata Kelola",
-    title: "Supervisi Bidan & Kader",
-    description:
-      "Pengaturan penugasan Posyandu, kontrol status aktif petugas, serta pencatatan audit log klinis.",
-    href: "/bidan/kader",
-    action: "Buka Panel Bidan",
-    icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.85}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-      </svg>
-    ),
   },
 ];
 
@@ -95,7 +74,236 @@ const SPECIALTY_MODULES = [
   },
 ];
 
+function getRoleLabel(role?: UserRole | null): string {
+  if (role === "bidan") return "Bidan Desa";
+  if (role === "orang_tua") return "Orang Tua / Wali";
+  return "Kader Posyandu";
+}
+
 export default function HomePage() {
+  const router = useRouter();
+  const [sessionProfile, setSessionProfile] =
+    useState<HomeSessionProfile | null>(null);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    let unsubscribe: (() => void) | null = null;
+
+    async function resolveSession() {
+      try {
+        const supabase = createClient();
+
+        const { data: listener } = supabase.auth.onAuthStateChange((event) => {
+          if (event === "SIGNED_OUT" && !cancelled) {
+            setSessionProfile(null);
+          }
+        });
+        unsubscribe = () => listener.subscription.unsubscribe();
+
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (!session?.user) {
+          if (!cancelled) {
+            setSessionProfile(null);
+            setIsCheckingAuth(false);
+          }
+          return;
+        }
+
+        const { data: profileRow, error: profileErr } = await supabase
+          .from("users")
+          .select("id, nama, peran, status_aktif")
+          .eq("id", session.user.id)
+          .maybeSingle();
+
+        if (cancelled) return;
+
+        if (profileErr) {
+          // Jaga tampilan sesi tetap utuh bila terjadi kendala jaringan sesaat di lapangan
+          const fallbackRole =
+            (session.user.user_metadata?.peran as UserRole | undefined) ??
+            "orang_tua";
+          const fallbackNama =
+            (session.user.user_metadata?.nama as string | undefined) ??
+            session.user.email ??
+            "Pengguna Posyandu+";
+          setSessionProfile({
+            id: session.user.id,
+            nama: fallbackNama,
+            peran: fallbackRole,
+            status_aktif: true,
+          });
+        } else if (profileRow) {
+          if (!profileRow.status_aktif) {
+            await supabase.auth.signOut();
+            setSessionProfile(null);
+          } else {
+            setSessionProfile(profileRow as HomeSessionProfile);
+          }
+        } else {
+          setSessionProfile(null);
+        }
+      } catch {
+        if (!cancelled) {
+          setSessionProfile(null);
+        }
+      } finally {
+        if (!cancelled) {
+          setIsCheckingAuth(false);
+        }
+      }
+    }
+
+    void resolveSession();
+
+    return () => {
+      cancelled = true;
+      if (unsubscribe) unsubscribe();
+    };
+  }, []);
+
+  async function handleSignOut() {
+    setIsSigningOut(true);
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      setSessionProfile(null);
+      router.replace("/login?logged_out=1");
+    } catch {
+      setIsSigningOut(false);
+    }
+  }
+
+  const isAuthenticated = sessionProfile !== null;
+  const isParent = sessionProfile?.peran === "orang_tua";
+  const isBidan = sessionProfile?.peran === "bidan";
+  const isKader = sessionProfile?.peran === "kader";
+  const roleLabel = getRoleLabel(sessionProfile?.peran);
+
+  const supportingModules = useMemo(() => {
+    const firstCard = {
+      step: "02",
+      tag: isParent ? "Akses Baca Anak" : "Daftar Wilayah",
+      title: isParent ? "Perkembangan Anak Saya" : "Pemantauan Balita Aktif",
+      description: isParent
+        ? "Pantau kurva pertumbuhan KMS Digital, status gizi terbaru, dan riwayat penimbangan bulanan anak Anda."
+        : "Daftar seluruh balita per wilayah Posyandu lengkap dengan status gizi dan riwayat timbang terakhir.",
+      href: "/balita",
+      prefetch: isAuthenticated,
+      action: isParent ? "Lihat Data Anak Saya" : "Buka Daftar Balita",
+      icon: (
+        <svg
+          className="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.85}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+          />
+        </svg>
+      ),
+    };
+
+    if (isParent) {
+      return [
+        firstCard,
+        {
+          step: "03",
+          tag: "Edukasi Gizi",
+          title: "Rekomendasi Perawatan AI",
+          description:
+            "Baca 3 saran pemberian makan dan perawatan harian berbahasa sederhana yang disesuaikan dengan status gizi Ananda.",
+          href: "/balita",
+          prefetch: true,
+          action: "Buka Hasil & Rekomendasi AI",
+          icon: (
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.85}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+              />
+            </svg>
+          ),
+        },
+      ];
+    }
+
+    if (isKader) {
+      return [
+        firstCard,
+        {
+          step: "03",
+          tag: "Layanan Kader",
+          title: "Registrasi & Persetujuan Wali",
+          description:
+            "Tambahkan profil balita usia 0-59 bulan di wilayah Posyandu Anda lengkap dengan pencatatan persetujuan UU PDP.",
+          href: "/balita/baru",
+          prefetch: true,
+          action: "Daftarkan Balita Baru",
+          icon: (
+            <svg
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.85}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM4 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 10.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
+              />
+            </svg>
+          ),
+        },
+      ];
+    }
+
+    return [
+      firstCard,
+      {
+        step: "03",
+        tag: "Tata Kelola",
+        title: "Supervisi Bidan & Kader",
+        description:
+          "Pengaturan penugasan Posyandu, kontrol status aktif petugas, serta pencatatan audit log klinis.",
+        href: isBidan ? "/bidan/kader" : "/login",
+        prefetch: isBidan,
+        action: isBidan ? "Buka Panel Bidan" : "Masuk sebagai Bidan",
+        icon: (
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.85}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+            />
+          </svg>
+        ),
+      },
+    ];
+  }, [isAuthenticated, isBidan, isKader, isParent]);
+
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-10 pb-14">
       {/* =====================================================================
@@ -106,43 +314,99 @@ export default function HomePage() {
         className="bg-synora-mesh relative overflow-hidden rounded-[24px] border border-[#C5E4E8] p-4 sm:p-6 lg:p-7 shadow-sm space-y-6"
       >
         {/* Top Floating Pill Navbar */}
-        <header className="relative z-10 flex items-center justify-between gap-3 rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <BrandLogo href="/" size="md" />
+        <header className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
+          <div className="flex items-center gap-2.5">
+            <BrandLogo href="/" size="md" />
+            {isAuthenticated && (
+              <span className="hidden sm:inline-flex items-center rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
+                {roleLabel}
+              </span>
+            )}
+          </div>
 
           <nav
             aria-label="Navigasi Utama"
             className="hidden md:flex items-center gap-5 text-xs font-semibold text-[#4A666C]"
           >
-            <Link href="/" className="min-h-[44px] inline-flex items-center text-[#0F292E]">
+            <Link
+              href="/"
+              className="min-h-[44px] inline-flex items-center text-[#0F292E]"
+            >
               Beranda
             </Link>
-            <Link href="#layanan" className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors">
+            <Link
+              href="#layanan"
+              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
+            >
               Alur Kerja
             </Link>
-            <Link href="#indikator" className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors">
-              Indikator WHO
-            </Link>
-            <Link href="/balita" className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors">
-              Daftar Balita
-            </Link>
-            <Link href="/bidan/kader" className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors">
-              Panel Bidan
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-2">
             <Link
-              href="/login"
-              className="hidden sm:inline-flex min-h-[48px] items-center justify-center rounded-full px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors"
+              href="#indikator"
+              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
             >
-              Masuk
+              Indikator WHO
             </Link>
             <Link
               href="/balita"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm"
+              prefetch={isAuthenticated}
+              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
             >
-              Buka Posyandu
+              {isParent ? "Perkembangan Anak" : "Daftar Balita"}
             </Link>
+            {isBidan && (
+              <Link
+                href="/bidan/kader"
+                className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
+              >
+                Panel Bidan
+              </Link>
+            )}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            {isCheckingAuth ? (
+              <div
+                aria-label="Memeriksa status sesi"
+                className="h-12 w-28 animate-pulse motion-reduce:animate-none rounded-full bg-[#EDF8FA]"
+              />
+            ) : isAuthenticated ? (
+              <>
+                <span className="hidden xl:inline-block max-w-[160px] truncate px-2 text-xs font-semibold text-[#0F292E]">
+                  {sessionProfile.nama}
+                </span>
+                <Link
+                  href="/balita"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-4 sm:px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm"
+                >
+                  {isParent ? "Data Anak Saya" : "Dashboard Balita"}
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  disabled={isSigningOut}
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-4 text-xs font-semibold text-white hover:bg-[#1E4249] transition-colors disabled:opacity-50"
+                >
+                  {isSigningOut ? "Keluar..." : "Keluar"}
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  prefetch={false}
+                  className="hidden sm:inline-flex min-h-[48px] items-center justify-center rounded-full px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors"
+                >
+                  Masuk
+                </Link>
+                <Link
+                  href="/balita"
+                  prefetch={false}
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm"
+                >
+                  Buka Posyandu
+                </Link>
+              </>
+            )}
           </div>
         </header>
 
@@ -151,7 +415,9 @@ export default function HomePage() {
           {/* Left Copy Column: Clean Typographic Eyebrow (no pill + no decorative dot per R-09/R-31) */}
           <div className="lg:col-span-6 space-y-3.5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#00857C]">
-              Posyandu Digital • Desa Kerobokan
+              {isAuthenticated
+                ? `Sesi Aktif: ${sessionProfile.nama} • ${roleLabel}`
+                : "Posyandu Digital • Desa Kerobokan"}
             </p>
 
             <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight leading-[1.2] text-[#0F292E]">
@@ -160,22 +426,56 @@ export default function HomePage() {
             </h1>
 
             <p className="max-w-lg text-xs sm:text-sm leading-relaxed text-[#4A666C]">
-              Pendampingan penimbangan bulanan dan deteksi dini risiko stunting usia 0-59 bulan berbasis kurva LMS WHO 2006 serta Permenkes RI No. 2 Tahun 2020.
+              {isParent
+                ? "Pantau kurva pertumbuhan KMS Digital, status gizi terbaru, serta rekomendasi perawatan harian berbasis AI untuk Ananda secara aman."
+                : "Pendampingan penimbangan bulanan dan deteksi dini risiko stunting usia 0-59 bulan berbasis kurva LMS WHO 2006 serta Permenkes RI No. 2 Tahun 2020."}
             </p>
 
             <div className="pt-1 flex flex-wrap items-center gap-2.5">
-              <Link
-                href="/balita"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
-              >
-                Buka Daftar Balita
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-6 text-sm font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
-              >
-                Masuk Petugas
-              </Link>
+              {isCheckingAuth ? (
+                <div className="h-12 w-48 animate-pulse motion-reduce:animate-none rounded-full bg-white/80" />
+              ) : isAuthenticated ? (
+                isParent ? (
+                  <Link
+                    href="/balita"
+                    className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+                  >
+                    Lihat Perkembangan Anak Saya
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      href="/balita"
+                      className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+                    >
+                      Buka Daftar Balita
+                    </Link>
+                    <Link
+                      href={isBidan ? "/bidan/kader" : "/balita/baru"}
+                      className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-6 text-sm font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
+                    >
+                      {isBidan ? "Kelola Akun Kader" : "Daftarkan Balita Baru"}
+                    </Link>
+                  </>
+                )
+              ) : (
+                <>
+                  <Link
+                    href="/balita"
+                    prefetch={false}
+                    className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#009E94]"
+                  >
+                    Buka Daftar Balita
+                  </Link>
+                  <Link
+                    href="/login"
+                    prefetch={false}
+                    className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-6 text-sm font-semibold text-[#0F292E] transition-colors hover:bg-[#EDF8FA]"
+                  >
+                    Masuk Akun
+                  </Link>
+                </>
+              )}
             </div>
           </div>
 
@@ -294,7 +594,7 @@ export default function HomePage() {
             </h2>
           </div>
           <p className="max-w-md text-xs leading-relaxed text-[#4A666C]">
-            Dirancang agar Kader dapat mendaftarkan balita, memotret tabel Buku KIA dengan verifikasi manusia, dan langsung membaca kurva KMS.
+            Dirancang agar Kader dapat mendaftarkan balita, memotret tabel Buku KIA dengan verifikasi manusia, dan berbagi hasil KMS kepada Orang Tua.
           </p>
         </div>
 
@@ -304,41 +604,59 @@ export default function HomePage() {
             <div className="space-y-3">
               <div className="flex items-center justify-between gap-2">
                 <span className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#00857C]">
-                  01 • Modul Utama Lapangan
+                  {isParent ? "01 • Portal Orang Tua / Wali" : "01 • Modul Utama Lapangan"}
                 </span>
                 <span className="rounded-full bg-white border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#0F292E]">
-                  Verifikasi Kader Wajib
+                  {isParent ? "Akses Baca Terisolasi" : "Verifikasi Kader Wajib"}
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#0F292E]">
-                Registrasi Balita &amp; Scan Tabel Buku KIA
+                {isParent
+                  ? "Pemantauan Kurva KMS & Hasil Gizi Anak"
+                  : "Registrasi Balita & Scan Tabel Buku KIA"}
               </h3>
               <p className="text-xs sm:text-sm leading-relaxed text-[#4A666C]">
-                Daftarkan profil balita dengan persetujuan orang tua (UU PDP), lalu potret halaman 127/128 Buku KIA atau catat manual untuk menghitung 7 indikator Z-Score WHO secara instan.
+                {isParent
+                  ? "Lihat grafik pertumbuhan berat dan tinggi badan anak Anda beserta 3 rekomendasi perawatan harian dari AI yang telah tervalidasi."
+                  : "Daftarkan profil balita dengan persetujuan orang tua (UU PDP), lalu potret halaman 127/128 Buku KIA atau catat manual untuk menghitung 7 indikator Z-Score WHO secara instan."}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <Link
-                href="/balita/baru"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#009E94] transition-colors"
-              >
-                Daftarkan Balita Baru
-              </Link>
-              <Link
-                href="/balita"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-white/80 transition-colors"
-              >
-                Pilih Balita untuk Diukur
-              </Link>
+              {isParent ? (
+                <Link
+                  href="/balita"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#009E94] transition-colors"
+                >
+                  Pantau Perkembangan Anak Saya
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href={isAuthenticated ? "/balita/baru" : "/login"}
+                    prefetch={isAuthenticated}
+                    className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#009E94] transition-colors"
+                  >
+                    Daftarkan Balita Baru
+                  </Link>
+                  <Link
+                    href="/balita"
+                    prefetch={isAuthenticated}
+                    className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-white/80 transition-colors"
+                  >
+                    Pilih Balita untuk Diukur
+                  </Link>
+                </>
+              )}
             </div>
           </div>
 
-          {/* Supporting Module Cards (Clean solid surfaces, no repeated gradient headers) */}
-          {SUPPORTING_MODULES.map((card) => (
+          {/* Supporting Module Cards (Clean solid surfaces, role-aware destinations) */}
+          {supportingModules.map((card) => (
             <Link
               key={card.step}
               href={card.href}
+              prefetch={card.prefetch}
               className="lg:col-span-3 flex flex-col justify-between rounded-2xl border border-[#D5ECEF] bg-white p-5 shadow-[0_1px_2px_rgba(15,41,46,0.03)] transition-colors hover:border-[#60C0D0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
             >
               <div className="space-y-3">
@@ -388,16 +706,19 @@ export default function HomePage() {
           <div className="flex items-center gap-2.5 shrink-0">
             <Link
               href="/balita"
+              prefetch={isAuthenticated}
               className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white shadow-sm hover:bg-[#009E94] transition-colors"
             >
-              Buka Daftar Balita
+              {isParent ? "Lihat Data Anak Saya" : "Buka Daftar Balita"}
             </Link>
-            <Link
-              href="/bidan/kader"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors"
-            >
-              Panel Bidan
-            </Link>
+            {isBidan && (
+              <Link
+                href="/bidan/kader"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-5 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors"
+              >
+                Panel Bidan
+              </Link>
+            )}
           </div>
         </div>
 
