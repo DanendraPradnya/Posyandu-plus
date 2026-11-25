@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { createAdminClient } from "@/lib/supabase/server";
 import { hashShareToken, maskChildName } from "@/lib/share/token";
-import { calculateAgeInMonths } from "@/lib/zscore/age";
+import { calculateAgeInMonths, getTodayIsoLocal } from "@/lib/zscore/age";
 import { BrandLogo, Card, StatusBadge } from "@/components/ui";
 import { HealthProfileCard } from "@/components/health/HealthProfileCard";
 import { KmsChart } from "@/components/kms/KmsChart";
@@ -106,7 +106,7 @@ export default async function PublicShareResultPage({
     return <NeutralInvalidView />;
   }
 
-  const todayIso = new Date().toISOString().slice(0, 10);
+  const todayIso = getTodayIsoLocal();
   const ageMonths = Math.max(0, calculateAgeInMonths(child.tgl_lahir, todayIso));
   const maskedName = maskChildName(child.nama);
 

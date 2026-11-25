@@ -17,7 +17,7 @@ export function SkeletonCard({ lines = 3, count = 3 }: SkeletonCardProps) {
       {Array.from({ length: count }).map((_, idx) => (
         <div
           key={idx}
-          className="animate-pulse rounded-2xl border border-[#D5ECEF] bg-white p-4 shadow-sm space-y-2.5"
+          className="animate-pulse motion-reduce:animate-none rounded-2xl border border-[#D5ECEF] bg-white p-4 shadow-sm space-y-2.5"
         >
           <div className="flex items-center justify-between gap-3">
             <div className="h-4 w-2/5 rounded bg-[#EDF8FA]" />
@@ -144,7 +144,7 @@ export function Toast({ tone = "info", message, onDismiss }: ToastProps) {
           type="button"
           onClick={onDismiss}
           aria-label="Tutup pemberitahuan"
-          className="inline-flex h-8 w-8 -my-1 -mr-1 items-center justify-center rounded-lg text-current hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+          className="inline-flex min-h-[48px] min-w-[48px] -my-2 -mr-2 shrink-0 items-center justify-center rounded-lg text-current hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
         >
           <svg
             className="h-4 w-4"

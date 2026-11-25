@@ -297,7 +297,7 @@ export function KmsChart({
           <button
             type="button"
             onClick={() => setKmsRange("0-2")}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[44px] ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[48px] ${
               kmsRange === "0-2"
                 ? "bg-[#00B9AD] text-white"
                 : "text-[#4A666C]"
@@ -308,7 +308,7 @@ export function KmsChart({
           <button
             type="button"
             onClick={() => setKmsRange("2-5")}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[44px] ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg min-h-[48px] ${
               kmsRange === "2-5"
                 ? "bg-[#00B9AD] text-white"
                 : "text-[#4A666C]"
@@ -320,11 +320,13 @@ export function KmsChart({
       </div>
 
       {/* Tab Indikator */}
-      <div className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#EDF8FA] p-1">
+      <div role="tablist" aria-label="Pilih grafik indikator KMS" className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#EDF8FA] p-1">
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "bbu"}
           onClick={() => setActiveTab("bbu")}
-          className={`min-h-[44px] rounded-lg text-xs font-bold transition-colors ${
+          className={`min-h-[48px] rounded-lg px-2 text-xs font-bold transition-colors ${
             activeTab === "bbu"
               ? "bg-white text-[#0F292E] shadow-sm"
               : "text-[#4A666C]"
@@ -334,8 +336,10 @@ export function KmsChart({
         </button>
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "pbtbu"}
           onClick={() => setActiveTab("pbtbu")}
-          className={`min-h-[44px] rounded-lg text-xs font-bold transition-colors ${
+          className={`min-h-[48px] rounded-lg px-2 text-xs font-bold transition-colors ${
             activeTab === "pbtbu"
               ? "bg-white text-[#0F292E] shadow-sm"
               : "text-[#4A666C]"
@@ -345,8 +349,10 @@ export function KmsChart({
         </button>
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === "bbpbtb"}
           onClick={() => setActiveTab("bbpbtb")}
-          className={`min-h-[44px] rounded-lg text-xs font-bold transition-colors ${
+          className={`min-h-[48px] rounded-lg px-2 text-xs font-bold transition-colors ${
             activeTab === "bbpbtb"
               ? "bg-white text-[#0F292E] shadow-sm"
               : "text-[#4A666C]"

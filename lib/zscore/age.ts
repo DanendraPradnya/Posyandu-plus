@@ -79,6 +79,16 @@ export function validateAgeInMonths(ageMonths: number): AgeValidationResult {
 }
 
 /**
+ * Mengembalikan tanggal hari ini dalam zona waktu lokal dengan format YYYY-MM-DD.
+ */
+export function getTodayIsoLocal(referenceDate: Date = new Date()): string {
+  const year = referenceDate.getFullYear();
+  const month = String(referenceDate.getMonth() + 1).padStart(2, "0");
+  const day = String(referenceDate.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+/**
  * Helper terpadu untuk menghitung sekaligus memvalidasi usia.
  */
 export function getAndValidateAge(birthDate: string, measureDate: string): AgeValidationResult {

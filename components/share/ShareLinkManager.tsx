@@ -130,7 +130,7 @@ export function ShareLinkManager({ childId }: ShareLinkManagerProps) {
           <p className="break-all rounded-lg bg-white p-2 text-xs font-mono text-[#0F292E] border border-[#C5E4E8]">
             {latestUrl}
           </p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="button" variant="secondary" size="sm" onClick={handleCopy}>
               {copied ? "Tersalin!" : "Salin Tautan"}
             </Button>
@@ -138,7 +138,7 @@ export function ShareLinkManager({ childId }: ShareLinkManagerProps) {
               href={latestUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[38px] items-center justify-center rounded-xl bg-[#00B9AD] px-3.5 py-2 text-xs font-semibold text-white"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-4 py-2 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors"
             >
               Buka Pratinjau
             </a>

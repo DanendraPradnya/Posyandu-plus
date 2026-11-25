@@ -45,7 +45,7 @@ export function Card({
 export interface StatCardProps {
   value: number | string;
   label: string;
-  tone?: "default" | "warning" | "success";
+  tone?: "default" | "warning" | "success" | "danger";
   subtitle?: string;
 }
 
@@ -53,6 +53,7 @@ const toneValueMap: Record<NonNullable<StatCardProps["tone"]>, string> = {
   default: "text-[#0F292E]",
   warning: "text-amber-700",
   success: "text-[#009E94]",
+  danger: "text-[#B91C1C]",
 };
 
 export function StatCard({

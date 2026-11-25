@@ -152,14 +152,14 @@ export function ManualMeasurementForm({
           />
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1.5 min-w-0">
           <label className="block text-sm font-medium text-[#0F292E]">
             Cara Ukur Panjang / Tinggi
           </label>
           <select
             value={caraUkur}
             onChange={(e) => setCaraUkur(e.target.value as MeasurementMethod | "")}
-            className="w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-4 py-2.5 text-sm text-[#0F292E]"
+            className="w-full min-w-0 max-w-full min-h-[48px] truncate text-ellipsis rounded-xl border border-[#C5E4E8] bg-white pl-3.5 pr-8 py-2.5 text-base sm:text-sm text-[#0F292E]"
           >
             <option value="">Otomatis sesuai usia (&lt; 24 bln berbaring, &gt;= 24 bln berdiri)</option>
             <option value="berbaring">Berbaring (PB)</option>
@@ -167,7 +167,7 @@ export function ManualMeasurementForm({
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
           <Input
             label="Lingkar Kepala (cm)"
             type="number"
@@ -189,7 +189,7 @@ export function ManualMeasurementForm({
           />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 min-w-0">
           <Input
             label="Catatan Imunisasi (Opsional)"
             type="text"
@@ -198,7 +198,7 @@ export function ManualMeasurementForm({
             onChange={(e) => setImunisasi(e.target.value)}
           />
 
-          <div className="space-y-1.5">
+          <div className="space-y-1.5 min-w-0">
             <label className="block text-sm font-medium text-[#0F292E]">
               Status ASI Eksklusif
             </label>
@@ -207,7 +207,7 @@ export function ManualMeasurementForm({
               onChange={(e) =>
                 setAsiEksklusif(e.target.value as "" | "ya" | "tidak")
               }
-              className="w-full min-h-[48px] rounded-xl border border-[#C5E4E8] bg-white px-4 py-2.5 text-sm text-[#0F292E]"
+              className="w-full min-w-0 max-w-full min-h-[48px] truncate text-ellipsis rounded-xl border border-[#C5E4E8] bg-white pl-3.5 pr-8 py-2.5 text-base sm:text-sm text-[#0F292E]"
             >
               <option value="">Tidak tercatat</option>
               <option value="ya">Ya (ASI Eksklusif)</option>

@@ -314,77 +314,59 @@ export default function HomePage() {
         className="bg-synora-mesh relative overflow-hidden rounded-[24px] border border-[#C5E4E8] p-4 sm:p-6 lg:p-7 shadow-sm space-y-6"
       >
         {/* Top Floating Pill Navbar */}
-        <header className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <div className="flex items-center gap-2.5">
+        <header className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)] min-w-0">
+          <div className="flex items-center gap-2 shrink-0">
             <BrandLogo href="/" size="md" />
-            {isAuthenticated && (
-              <span className="hidden sm:inline-flex items-center rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
-                {roleLabel}
-              </span>
-            )}
           </div>
 
           <nav
             aria-label="Navigasi Utama"
-            className="hidden md:flex items-center gap-5 text-xs font-semibold text-[#4A666C]"
+            className="hidden lg:flex items-center gap-5 text-xs font-semibold text-[#4A666C]"
           >
             <Link
-              href="/"
-              className="min-h-[44px] inline-flex items-center text-[#0F292E]"
-            >
-              Beranda
-            </Link>
-            <Link
               href="#layanan"
-              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
+              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors whitespace-nowrap"
             >
               Alur Kerja
             </Link>
             <Link
               href="#indikator"
-              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
+              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors whitespace-nowrap"
             >
               Indikator WHO
-            </Link>
-            <Link
-              href="/balita"
-              prefetch={isAuthenticated}
-              className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
-            >
-              {isParent ? "Perkembangan Anak" : "Daftar Balita"}
             </Link>
             {isBidan && (
               <Link
                 href="/bidan/kader"
-                className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors"
+                className="min-h-[44px] inline-flex items-center hover:text-[#00B9AD] transition-colors whitespace-nowrap"
               >
                 Panel Bidan
               </Link>
             )}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {isCheckingAuth ? (
               <div
                 aria-label="Memeriksa status sesi"
-                className="h-12 w-28 animate-pulse motion-reduce:animate-none rounded-full bg-[#EDF8FA]"
+                className="h-12 w-24 sm:w-28 animate-pulse motion-reduce:animate-none rounded-full bg-[#EDF8FA]"
               />
             ) : isAuthenticated ? (
               <>
-                <span className="hidden xl:inline-block max-w-[160px] truncate px-2 text-xs font-semibold text-[#0F292E]">
-                  {sessionProfile.nama}
-                </span>
                 <Link
                   href="/balita"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-4 sm:px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-3.5 sm:px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm whitespace-nowrap"
                 >
-                  {isParent ? "Data Anak Saya" : "Dashboard Balita"}
+                  <span className="sm:hidden">{isParent ? "Data Anak" : "Dashboard"}</span>
+                  <span className="hidden sm:inline">
+                    {isParent ? "Data Anak Saya" : "Dashboard Balita"}
+                  </span>
                 </Link>
                 <button
                   type="button"
                   onClick={handleSignOut}
                   disabled={isSigningOut}
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-4 text-xs font-semibold text-white hover:bg-[#1E4249] transition-colors disabled:opacity-50"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-3.5 sm:px-4 text-xs font-semibold text-white hover:bg-[#1E4249] transition-colors disabled:opacity-50 whitespace-nowrap"
                 >
                   {isSigningOut ? "Keluar..." : "Keluar"}
                 </button>
@@ -394,14 +376,14 @@ export default function HomePage() {
                 <Link
                   href="/login"
                   prefetch={false}
-                  className="hidden sm:inline-flex min-h-[48px] items-center justify-center rounded-full px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors"
+                  className="hidden sm:inline-flex min-h-[48px] items-center justify-center rounded-full px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] transition-colors whitespace-nowrap"
                 >
                   Masuk
                 </Link>
                 <Link
                   href="/balita"
                   prefetch={false}
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#00B9AD] px-4 sm:px-5 text-xs font-semibold text-white hover:bg-[#009E94] transition-colors shadow-sm whitespace-nowrap"
                 >
                   Buka Posyandu
                 </Link>

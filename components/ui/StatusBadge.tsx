@@ -5,6 +5,7 @@ export type BadgeStatusType =
   | "Waspada"
   | "Berisiko"
   | "Kritis"
+  | "Sudah Diukur"
   | "Belum Diukur"
   | "Aktif"
   | "Nonaktif"
@@ -45,10 +46,16 @@ const badgeStyleMap: Record<
     dot: "bg-[#B91C1C]",
     defaultLabel: "Kritis",
   },
+  "Sudah Diukur": {
+    bg: "bg-[#DCFCE7] border-green-300",
+    text: "text-[#15803D]",
+    dot: "bg-[#15803D]",
+    defaultLabel: "Sudah Diukur",
+  },
   "Belum Diukur": {
-    bg: "bg-[#EDF8FA] border-[#C5E4E8]",
-    text: "text-[#4A666C]",
-    dot: "bg-[#60C0D0]",
+    bg: "bg-[#FEE2E2] border-red-300",
+    text: "text-[#B91C1C]",
+    dot: "bg-[#B91C1C]",
     defaultLabel: "Belum Diukur",
   },
   Aktif: {

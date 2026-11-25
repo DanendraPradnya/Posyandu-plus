@@ -4,7 +4,13 @@ import React, { Suspense, useCallback, useEffect, useMemo, useState } from "reac
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { calculateAgeInMonths } from "@/lib/zscore/age";
+import { calculateAgeInMonths, getTodayIsoLocal } from "@/lib/zscore/age";
+import {
+  filterChildrenByMeasurementSegment,
+  getChildMeasurementStatus,
+  hasChildMeasurement,
+  type MeasurementSegment,
+} from "@/lib/measurement-status";
 import type { OverallHealthStatus, Posyandu, Sex, UserProfile } from "@/lib/types";
 import {
   BrandLogo,
@@ -15,7 +21,6 @@ import {
   StatCard,
   StatusBadge,
   Toast,
-  type BadgeStatusType,
 } from "@/components/ui";
 
 interface ChildListItem {
@@ -27,20 +32,13 @@ interface ChildListItem {
   banjar: string;
   posyandu_id: string;
   created_at: string;
+  measurementCount: number;
   latestMeasureDate: string | null;
   latestWeightKg: number | null;
   latestStatus: OverallHealthStatus | null;
 }
 
 type SortOption = "terbaru" | "nama";
-
-function getTodayIso(): string {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
 
 function DaftarBalitaContent() {
   const router = useRouter();
@@ -57,9 +55,9 @@ function DaftarBalitaContent() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<SortOption>("terbaru");
+  const [segmentFilter, setSegmentFilter] = useState<MeasurementSegment>("all");
 
-  const todayIso = useMemo(() => getTodayIso(), []);
-  const currentYearMonth = useMemo(() => todayIso.slice(0, 7), [todayIso]);
+  const todayIso = useMemo(() => getTodayIsoLocal(), []);
 
   const loadDashboardData = useCallback(async () => {
     setIsLoading(true);
@@ -140,6 +138,7 @@ function DaftarBalitaContent() {
         string,
         { tgl_ukur: string; bb_kg: number; id: string }
       > = {};
+      const measureCountByChild: Record<string, number> = {};
       const statusByMeasurement: Record<string, OverallHealthStatus> = {};
 
       if (childIds.length > 0) {
@@ -151,6 +150,8 @@ function DaftarBalitaContent() {
 
         if (measurementRows) {
           for (const m of measurementRows) {
+            measureCountByChild[m.child_id] =
+              (measureCountByChild[m.child_id] ?? 0) + 1;
             if (!latestMeasureByChild[m.child_id]) {
               latestMeasureByChild[m.child_id] = {
                 id: m.id,
@@ -195,6 +196,7 @@ function DaftarBalitaContent() {
           banjar: child.banjar,
           posyandu_id: child.posyandu_id,
           created_at: child.created_at,
+          measurementCount: measureCountByChild[child.id] ?? 0,
           latestMeasureDate: latestM?.tgl_ukur ?? null,
           latestWeightKg: latestM?.bb_kg ?? null,
           latestStatus,
@@ -231,32 +233,29 @@ function DaftarBalitaContent() {
   // Perhitungan metrik asli dari data basis data (tanpa angka fiktif)
   const metrics = useMemo(() => {
     const total = childrenList.length;
-    const weighedThisMonth = childrenList.filter(
-      (c) =>
-        c.latestMeasureDate !== null &&
-        c.latestMeasureDate.startsWith(currentYearMonth)
+    const measuredCount = childrenList.filter((c) =>
+      hasChildMeasurement(c)
     ).length;
-    const needsAttention = childrenList.filter(
-      (c) =>
-        c.latestStatus === "Waspada" ||
-        c.latestStatus === "Berisiko" ||
-        c.latestStatus === "Kritis"
-    ).length;
+    const unmeasuredCount = total - measuredCount;
 
-    return { total, weighedThisMonth, needsAttention };
-  }, [childrenList, currentYearMonth]);
+    return { total, measuredCount, unmeasuredCount };
+  }, [childrenList]);
 
-  // Filter & pengurutan daftar anak
+  // Filter segmentasi, pencarian, & pengurutan daftar anak
   const filteredChildren = useMemo(() => {
+    const segmented = filterChildrenByMeasurementSegment(
+      childrenList,
+      segmentFilter
+    );
     const query = searchQuery.trim().toLowerCase();
     const filtered = query
-      ? childrenList.filter(
+      ? segmented.filter(
           (c) =>
             c.nama.toLowerCase().includes(query) ||
             c.nama_ortu.toLowerCase().includes(query) ||
             c.banjar.toLowerCase().includes(query)
         )
-      : [...childrenList];
+      : [...segmented];
 
     filtered.sort((a, b) => {
       if (sortBy === "nama") {
@@ -268,7 +267,7 @@ function DaftarBalitaContent() {
     });
 
     return filtered;
-  }, [childrenList, searchQuery, sortBy]);
+  }, [childrenList, segmentFilter, searchQuery, sortBy]);
 
   const assignedPosyanduName = useMemo(() => {
     if (!profile) return "Memuat Posyandu...";
@@ -297,19 +296,19 @@ function DaftarBalitaContent() {
       {/* Area Header Klinis (1 per layar) */}
       <header className="bg-synora-mesh relative overflow-hidden rounded-[24px] p-4 sm:p-6 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-5">
         {/* Top Floating Pill Navbar */}
-        <div className="relative z-10 flex items-center justify-between gap-3 flex-wrap rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-          <div className="flex items-center gap-2.5">
+        <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 rounded-full bg-white/95 backdrop-blur-md border border-[#D5ECEF] px-3 sm:px-4 py-1.5 text-[#0F292E] shadow-[0_1px_2px_rgba(15,41,46,0.04)] min-w-0">
+          <div className="flex items-center gap-2 shrink-0">
             <BrandLogo href="/" size="md" />
             <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-[#EDF8FA] border border-[#C5E4E8] px-2.5 py-0.5 text-[11px] font-semibold text-[#00857C]">
               {roleLabel}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {profile?.peran === "bidan" && (
               <Link
                 href="/bidan/kader"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA]"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-[#C5E4E8] bg-white px-3.5 sm:px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] whitespace-nowrap"
               >
                 Kelola Kader
               </Link>
@@ -318,7 +317,7 @@ function DaftarBalitaContent() {
               type="button"
               onClick={handleSignOut}
               disabled={isSigningOut}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-4 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#0F292E] px-3.5 sm:px-4 text-xs font-semibold text-white hover:bg-[#1E4249] disabled:opacity-50 whitespace-nowrap"
             >
               {isSigningOut ? "Keluar..." : "Keluar"}
             </button>
@@ -358,22 +357,24 @@ function DaftarBalitaContent() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 grid grid-cols-3 gap-2.5">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
             <StatCard
               value={isLoading ? 0 : metrics.total}
               label="Total Balita"
               tone="default"
             />
             <StatCard
-              value={isLoading ? 0 : metrics.weighedThisMonth}
-              label="Ditimbang Bln Ini"
+              value={isLoading ? 0 : metrics.measuredCount}
+              label="Sudah Diukur"
               tone="success"
             />
-            <StatCard
-              value={isLoading ? 0 : metrics.needsAttention}
-              label="Perlu Perhatian"
-              tone={metrics.needsAttention > 0 ? "warning" : "default"}
-            />
+            <div className="col-span-2 sm:col-span-1">
+              <StatCard
+                value={isLoading ? 0 : metrics.unmeasuredCount}
+                label="Belum Diukur"
+                tone={metrics.unmeasuredCount > 0 ? "danger" : "default"}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -399,40 +400,99 @@ function DaftarBalitaContent() {
         />
       )}
 
-      {/* Bar Pencarian dan Pengurutan */}
-      <Card variant="white" padding="sm" className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-        <div className="flex-1">
-          <label htmlFor="search-balita" className="sr-only">
-            Cari nama balita, orang tua, atau banjar
-          </label>
-          <input
-            id="search-balita"
-            type="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Cari nama balita, orang tua, atau banjar..."
-            className="w-full min-h-[48px] rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-base text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
-          />
-        </div>
+      {/* Bar Pencarian dan Pengurutan (hanya tampil jika relevan bagi data & peran) */}
+      {!isLoading && !errorMsg && childrenList.length > 0 && (!isParent || childrenList.length > 1) && (
+        <Card
+          variant="white"
+          padding="sm"
+          className="flex flex-col md:flex-row md:items-center justify-between gap-3 min-w-0 overflow-hidden"
+        >
+          <div className="flex-1 min-w-0">
+            <label htmlFor="search-balita" className="sr-only">
+              Cari nama balita, orang tua, atau banjar
+            </label>
+            <input
+              id="search-balita"
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari nama balita, orang tua, atau banjar..."
+              className="w-full min-w-0 max-w-full min-h-[48px] rounded-full border border-[#C5E4E8] bg-[#F7FBFC] px-4 text-base sm:text-sm text-[#0F292E] placeholder:text-[#7A969C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            />
+          </div>
 
-        <div className="flex items-center gap-2.5 md:w-72">
-          <label
-            htmlFor="sort-balita"
-            className="text-xs font-semibold text-[#4A666C] shrink-0"
+          <div className="flex items-center gap-2.5 w-full md:w-72 md:shrink-0 min-w-0">
+            <label
+              htmlFor="sort-balita"
+              className="text-xs font-semibold text-[#4A666C] shrink-0"
+            >
+              Urutkan:
+            </label>
+            <select
+              id="sort-balita"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="min-h-[48px] w-full min-w-0 max-w-full flex-1 truncate text-ellipsis rounded-full border border-[#C5E4E8] bg-white pl-3.5 pr-8 text-base sm:text-sm font-medium text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            >
+              <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
+              <option value="nama">Nama Balita (A - Z)</option>
+            </select>
+          </div>
+        </Card>
+      )}
+
+      {/* Segmentasi Status Pengukuran (Sudah Diukur vs Belum Diukur) */}
+      {!isLoading && !errorMsg && childrenList.length > 1 && (
+        <div
+          role="tablist"
+          aria-label="Segmentasi status pengukuran balita"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-2xl border border-[#D5ECEF] bg-white p-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.03)]"
+        >
+          <button
+            type="button"
+            role="tab"
+            aria-selected={segmentFilter === "all"}
+            onClick={() => setSegmentFilter("all")}
+            className={`inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-3 text-xs font-semibold transition-colors ${
+              segmentFilter === "all"
+                ? "bg-[#0F292E] text-white shadow-sm"
+                : "text-[#4A666C] hover:bg-[#EDF8FA]"
+            }`}
           >
-            Urutkan:
-          </label>
-          <select
-            id="sort-balita"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="min-h-[48px] flex-1 rounded-full border border-[#C5E4E8] bg-white px-3.5 text-base font-medium text-[#0F292E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+            <span>Semua ({metrics.total})</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected={segmentFilter === "measured"}
+            onClick={() => setSegmentFilter("measured")}
+            className={`inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-3 text-xs font-semibold transition-colors ${
+              segmentFilter === "measured"
+                ? "bg-[#DCFCE7] border border-green-300 text-[#15803D] shadow-sm"
+                : "text-[#15803D] hover:bg-[#DCFCE7]/50"
+            }`}
           >
-            <option value="terbaru">Kunjungan / Pendaftaran Terbaru</option>
-            <option value="nama">Nama Balita (A - Z)</option>
-          </select>
+            <span className="h-2 w-2 rounded-full bg-[#15803D]" aria-hidden="true" />
+            <span>Sudah Diukur ({metrics.measuredCount})</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            aria-selected={segmentFilter === "unmeasured"}
+            onClick={() => setSegmentFilter("unmeasured")}
+            className={`inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl px-3 text-xs font-semibold transition-colors ${
+              segmentFilter === "unmeasured"
+                ? "bg-[#FEE2E2] border border-red-300 text-[#B91C1C] shadow-sm"
+                : "text-[#B91C1C] hover:bg-[#FEE2E2]/50"
+            }`}
+          >
+            <span className="h-2 w-2 rounded-full bg-[#B91C1C]" aria-hidden="true" />
+            <span>Belum Diukur ({metrics.unmeasuredCount})</span>
+          </button>
         </div>
-      </Card>
+      )}
 
       {/* Daftar Anak dengan 3 State Eksplisit: Loading, Error, Empty */}
       <section aria-label="Daftar Anak" className="space-y-3.5">
@@ -459,12 +519,28 @@ function DaftarBalitaContent() {
             />
           )
         ) : filteredChildren.length === 0 ? (
-          <EmptyState
-            title="Tidak Ditemukan Hasil Pencarian"
-            description={`Tidak ada balita yang cocok dengan kata kunci "${searchQuery}".`}
-            actionLabel="Reset Pencarian"
-            onAction={() => setSearchQuery("")}
-          />
+          searchQuery.trim() ? (
+            <EmptyState
+              title="Tidak Ditemukan Hasil Pencarian"
+              description={`Tidak ada balita yang cocok dengan kata kunci "${searchQuery}".`}
+              actionLabel="Reset Pencarian"
+              onAction={() => setSearchQuery("")}
+            />
+          ) : segmentFilter === "unmeasured" ? (
+            <EmptyState
+              title="Semua Balita Sudah Diukur"
+              description="Seluruh balita dalam daftar sudah memiliki minimal satu data pengukuran pada profilnya."
+              actionLabel="Tampilkan Semua Balita"
+              onAction={() => setSegmentFilter("all")}
+            />
+          ) : (
+            <EmptyState
+              title="Belum Ada Balita yang Diukur"
+              description="Belum ada balita yang memiliki catatan data pengukuran antropometri."
+              actionLabel="Tampilkan Semua Balita"
+              onAction={() => setSegmentFilter("all")}
+            />
+          )
         ) : (
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {filteredChildren.map((child) => {
@@ -478,8 +554,8 @@ function DaftarBalitaContent() {
                 ageMonths = 0;
               }
 
-              const badgeStatus: BadgeStatusType =
-                child.latestStatus ?? "Belum Diukur";
+              const measurementStatus = getChildMeasurementStatus(child);
+              const isMeasured = hasChildMeasurement(child);
 
               return (
                 <li key={child.id}>
@@ -488,7 +564,7 @@ function DaftarBalitaContent() {
                     className="flex h-full flex-col justify-between rounded-2xl border border-[#D5ECEF] bg-white p-4 shadow-[0_1px_2px_rgba(15,41,46,0.03)] transition-all hover:border-[#60C0D0] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <div>
+                      <div className="min-w-0">
                         <h2 className="text-sm font-bold text-[#0F292E]">
                           {child.nama}
                         </h2>
@@ -496,7 +572,12 @@ function DaftarBalitaContent() {
                           Orang Tua: {child.nama_ortu} • {child.banjar}
                         </p>
                       </div>
-                      <StatusBadge status={badgeStatus} />
+                      <div className="flex flex-wrap items-center justify-end gap-1.5 shrink-0">
+                        <StatusBadge status={measurementStatus} />
+                        {isMeasured && child.latestStatus && (
+                          <StatusBadge status={child.latestStatus} />
+                        )}
+                      </div>
                     </div>
 
                     <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 border-t border-[#EDF8FA] pt-2.5 text-xs text-[#4A666C]">
@@ -507,13 +588,15 @@ function DaftarBalitaContent() {
                         </span>
                       </div>
 
-                      <div className="text-right tabular-nums text-[11px] text-[#4A666C]">
-                        {child.latestMeasureDate ? (
-                          <span>
+                      <div className="text-right tabular-nums text-[11px]">
+                        {isMeasured ? (
+                          <span className="text-[#4A666C]">
                             {child.latestMeasureDate} ({child.latestWeightKg} kg)
                           </span>
                         ) : (
-                          <span>Belum diukur</span>
+                          <span className="font-semibold text-[#B91C1C]">
+                            Belum ada data pengukuran
+                          </span>
                         )}
                       </div>
                     </div>

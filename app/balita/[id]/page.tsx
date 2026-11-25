@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { calculateAgeInMonths } from "@/lib/zscore/age";
+import { getChildMeasurementStatus } from "@/lib/measurement-status";
 import type {
   Child,
   HealthProfile,
@@ -178,17 +179,19 @@ export default function DetailBalitaPage() {
     child !== null
       ? Math.max(0, calculateAgeInMonths(child.tgl_lahir, todayIso))
       : 0;
+  const measurementStatus = getChildMeasurementStatus(measurements.length);
 
   return (
     <div className="min-h-screen px-4 sm:px-6 py-4 sm:py-5 space-y-5 pb-12">
-      <div className="flex items-center justify-between gap-3 rounded-full bg-white border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)]">
-        <BrandLogo href="/" size="md" />
+      <div className="flex items-center justify-between gap-2 sm:gap-3 rounded-full bg-white border border-[#D5ECEF] px-3 sm:px-4 py-1.5 shadow-[0_1px_2px_rgba(15,41,46,0.04)] min-w-0">
+        <BrandLogo href="/" size="md" className="shrink-0" />
         <Link
           href="/balita"
-          className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#C5E4E8] bg-white px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD]"
+          className="inline-flex min-h-[48px] shrink-0 items-center gap-1.5 rounded-full border border-[#C5E4E8] bg-white px-3.5 sm:px-4 text-xs font-semibold text-[#0F292E] hover:bg-[#EDF8FA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B9AD] whitespace-nowrap"
         >
           <span aria-hidden="true">&larr;</span>
-          <span>Kembali ke Daftar Balita</span>
+          <span className="sm:hidden">Daftar Balita</span>
+          <span className="hidden sm:inline">Kembali ke Daftar Balita</span>
         </Link>
       </div>
 
@@ -204,9 +207,13 @@ export default function DetailBalitaPage() {
         <>
           <header className="bg-synora-mesh rounded-[24px] p-5 border border-[#C5E4E8] text-[#0F292E] shadow-sm space-y-2.5">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <StatusBadge status={child.jenis_kelamin} />
+              <div className="flex flex-wrap items-center gap-2">
+                <StatusBadge status={child.jenis_kelamin} />
+                <StatusBadge status={measurementStatus} />
+              </div>
               <span className="text-xs font-semibold tabular-nums text-[#00857C]">
                 Usia: {ageMonths} bulan
+                {measurements.length > 0 ? ` • ${measurements.length} kunjungan` : ""}
               </span>
             </div>
             <div>
@@ -223,24 +230,24 @@ export default function DetailBalitaPage() {
             <h2 className="text-sm font-bold text-[#0F292E]">
               Informasi Keluarga &amp; Posyandu
             </h2>
-            <dl className="grid grid-cols-1 gap-2 text-xs sm:text-sm">
-              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
-                <dt className="text-[#4A666C]">Nama Orang Tua / Wali</dt>
-                <dd className="font-semibold text-[#0F292E]">{child.nama_ortu}</dd>
+            <dl className="grid grid-cols-1 gap-2.5 text-xs sm:text-sm">
+              <div className="flex items-start justify-between gap-4 border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C] shrink-0">Nama Orang Tua / Wali</dt>
+                <dd className="font-semibold text-[#0F292E] text-right break-words min-w-0">{child.nama_ortu}</dd>
               </div>
-              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
-                <dt className="text-[#4A666C]">Banjar / Dusun</dt>
-                <dd className="font-semibold text-[#0F292E]">{child.banjar}</dd>
+              <div className="flex items-start justify-between gap-4 border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C] shrink-0">Banjar / Dusun</dt>
+                <dd className="font-semibold text-[#0F292E] text-right break-words min-w-0">{child.banjar}</dd>
               </div>
-              <div className="flex justify-between border-b border-[#EDF8FA] pb-1.5">
-                <dt className="text-[#4A666C]">Posyandu</dt>
-                <dd className="font-semibold text-[#0F292E]">
+              <div className="flex items-start justify-between gap-4 border-b border-[#EDF8FA] pb-1.5">
+                <dt className="text-[#4A666C] shrink-0">Posyandu</dt>
+                <dd className="font-semibold text-[#0F292E] text-right break-words min-w-0">
                   {posyandu?.nama ?? child.posyandu_id}
                 </dd>
               </div>
-              <div className="flex justify-between">
-                <dt className="text-[#4A666C]">Persetujuan UU PDP</dt>
-                <dd className="font-semibold text-[#009E94] tabular-nums">
+              <div className="flex items-start justify-between gap-4">
+                <dt className="text-[#4A666C] shrink-0">Persetujuan UU PDP</dt>
+                <dd className="font-semibold text-[#009E94] tabular-nums text-right">
                   Tercatat ({child.consent_at.slice(0, 10)})
                 </dd>
               </div>
@@ -295,10 +302,19 @@ export default function DetailBalitaPage() {
               Riwayat Kunjungan Antropometri ({measurements.length})
             </h2>
             {measurements.length === 0 ? (
-              <EmptyState
-                title="Belum Ada Riwayat Penimbangan"
-                description="Balita ini telah terdaftar. Pencatatan kunjungan penimbangan dan grafik KMS akan tampil di bagian ini."
-              />
+              userRole === "orang_tua" ? (
+                <EmptyState
+                  title="Belum Diukur oleh Petugas Posyandu"
+                  description="Data penimbangan dan pengukuran Ananda belum diinput oleh Kader Posyandu atau Bidan Desa."
+                />
+              ) : (
+                <EmptyState
+                  title="Anak Belum Diukur"
+                  description="Belum ada data pengukuran pada profil balita ini. Lakukan Scan Foto Buku KIA atau Input Manual agar status berubah menjadi Sudah Diukur."
+                  actionLabel="Input Pengukuran Sekarang"
+                  onAction={() => router.push(`/balita/${child.id}/ukur?mode=manual`)}
+                />
+              )
             ) : (
               <ul className="space-y-2.5">
                 {measurements.map((m) => {
